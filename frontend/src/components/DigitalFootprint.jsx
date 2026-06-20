@@ -160,9 +160,9 @@ export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -
             <span className="opacity-70">Device:</span>
             <span className="text-on-surface truncate max-w-[100px] text-right">{browserInfo.os}</span>
           </div>
-          <div className="flex justify-between border-b border-on-surface-variant/10 pb-0.5">
-            <span className="opacity-70">GPU:</span>
-            <span className="text-on-surface truncate max-w-[130px] text-right" title={browserInfo.gpu}>{browserInfo.gpu}</span>
+          <div className="flex justify-between border-b border-on-surface-variant/10 pb-0.5 items-start">
+            <span className="opacity-70 mt-0.5">GPU:</span>
+            <span className="text-on-surface max-w-[140px] text-right text-[9px] leading-tight" title={browserInfo.gpu}>{browserInfo.gpu}</span>
           </div>
           <div className="flex justify-between border-b border-on-surface-variant/10 pb-0.5">
             <span className="opacity-70">Lang:</span>
