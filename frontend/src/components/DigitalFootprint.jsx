@@ -58,8 +58,12 @@ export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -
         const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
         if (debugInfo) {
           gpu = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
-          // Clean up some common prefixes to make it cleaner
-          gpu = gpu.replace('ANGLE (', '').replace(' Direct3D11 vs_5_0 ps_5_0)', '').replace(', or similar', '').trim();
+          // Clean up common ugly strings (e.g. "ANGLE (NVIDIA, NVIDIA GeForce RTX 3070 Ti Laptop GPU (0x00002F58) Direct3D11 vs_5_0 ps_5_0, D3D11)")
+          gpu = gpu.replace(/ANGLE \([^,]+, /, ''); // Removes "ANGLE (Vendor, "
+          gpu = gpu.replace(/ \([^)]+\) Direct3D.*/, ''); // Removes " (0x...) Direct3D..."
+          gpu = gpu.replace(/ Direct3D.*/, ''); // Removes " Direct3D..."
+          gpu = gpu.replace(/, or similar.*/, '');
+          gpu = gpu.trim();
         }
       }
     } catch (e) {}
