@@ -32,6 +32,15 @@ export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -
     else if (ua.includes("Chrome")) browser = "Chrome";
     else if (ua.includes("Safari")) browser = "Safari";
     
+    // Brave disguises itself as Chrome for privacy, but we can detect it using its custom API
+    if (navigator.brave && navigator.brave.isBrave) {
+      navigator.brave.isBrave().then(isBrave => {
+        if (isBrave) {
+          setBrowserInfo(prev => ({ ...prev, browser: "Brave" }));
+        }
+      });
+    }
+    
     let os = "Unknown OS";
     if (ua.includes("Win")) os = "Windows";
     else if (ua.includes("Mac")) os = "macOS";
