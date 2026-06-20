@@ -90,7 +90,7 @@ function App() {
         })}
       </div>
       
-      <main className="flex-grow relative w-full h-full md:min-h-[800px] min-h-screen" style={{ zIndex: 10 }}>
+      <main className="flex-grow relative w-full h-full min-h-[800px]" style={{ zIndex: 10 }}>
         <Routes>
           <Route path="/" element={<Desktop />} />
           <Route path="/folder/about" element={<AboutPage />} />

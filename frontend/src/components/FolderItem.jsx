@@ -3,21 +3,11 @@ import { useNavigate } from 'react-router-dom';
 
 export default function FolderItem({ label, top, left, rotate, path, w, h, iconProps, peekItems = [] }) {
   const navigate = useNavigate();
-  const [isMobile, setIsMobile] = useState(false);
+  const [position, setPosition] = useState({ top, left });
   const [isDragging, setIsDragging] = useState(false);
   const dragRef = useRef(null);
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  useEffect(() => {
-    if (isMobile) return;
     const el = dragRef.current;
     if (!el) return;
     
@@ -61,24 +51,17 @@ export default function FolderItem({ label, top, left, rotate, path, w, h, iconP
 
     return () => {
       el.removeEventListener('mousedown', handleMouseDown);
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
       el.removeEventListener('click', handleClick);
     };
-  }, [isDragging, navigate, path, isMobile]);
-
-  const handleMobileClick = () => {
-    if (isMobile) {
-      navigate(path);
-    }
-  };
+  }, [isDragging, navigate, path]);
 
   return (
     <div 
       ref={dragRef}
-      onClick={handleMobileClick}
-      className="folder-wrapper md:absolute relative cursor-pointer flex flex-col items-center group" 
-      style={isMobile ? { transform: `rotate(${rotate}deg)` } : { top, left, transform: `rotate(${rotate}deg)` }}
+      className="folder-wrapper cursor-pointer flex flex-col items-center group" 
+      style={{ top, left, transform: `rotate(${rotate}deg)` }}
     >
       <div className="relative pointer-events-none">
         <svg className={`folder-icon text-folder-cyan ${w} ${h}`} fill="currentColor" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" {...iconProps}>
