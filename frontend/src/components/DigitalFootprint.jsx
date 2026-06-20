@@ -15,15 +15,26 @@ export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -
   const dragRef = useRef(null);
 
   useEffect(() => {
-    // Fetch IP Data
+    // Fetch IP Data with fallback
     fetch('https://ipapi.co/json/')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error('Rate limited');
+        return res.json();
+      })
       .then(data => {
         if (data.ip) {
           setIpData({ ip: data.ip, isp: data.org || data.network || "Unknown ISP" });
         }
       })
-      .catch(() => setIpData({ ip: "Encrypted", isp: "" }));
+      .catch(() => {
+        // Fallback to ipify if ipapi.co blocks us or rate limits
+        fetch('https://api.ipify.org?format=json')
+          .then(res => res.json())
+          .then(data => {
+            if (data.ip) setIpData({ ip: data.ip, isp: "Unknown ISP" });
+          })
+          .catch(() => setIpData({ ip: "Encrypted", isp: "" }));
+      });
 
     // Extract Browser Info
     const ua = navigator.userAgent;
