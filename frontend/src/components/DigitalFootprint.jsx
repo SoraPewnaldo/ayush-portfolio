@@ -6,7 +6,8 @@ export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -
     browser: "Unknown",
     os: "Unknown",
     language: "Unknown",
-    timezone: "Unknown"
+    timezone: "Unknown",
+    gpu: "Unknown"
   });
   
   const [position, setPosition] = useState({ top, left });
@@ -48,11 +49,27 @@ export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -
     else if (ua.includes("Android")) os = "Android";
     else if (ua.includes("like Mac")) os = "iOS";
 
+    // GPU Detection via WebGL
+    let gpu = "Unknown GPU";
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      if (gl) {
+        const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+        if (debugInfo) {
+          gpu = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+          // Clean up some common prefixes to make it cleaner
+          gpu = gpu.replace('ANGLE (', '').replace(' Direct3D11 vs_5_0 ps_5_0)', '').replace(', or similar', '').trim();
+        }
+      }
+    } catch (e) {}
+
     setBrowserInfo({
       browser,
       os,
       language: navigator.language || "Unknown",
-      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Unknown"
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Unknown",
+      gpu
     });
   }, []);
 
@@ -144,6 +161,10 @@ export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -
             <span className="text-on-surface">{browserInfo.os}</span>
           </div>
           <div className="flex justify-between border-b border-on-surface-variant/10 pb-1">
+            <span className="opacity-70">GPU:</span>
+            <span className="text-on-surface truncate max-w-[150px]" title={browserInfo.gpu}>{browserInfo.gpu}</span>
+          </div>
+          <div className="flex justify-between border-b border-on-surface-variant/10 pb-1">
             <span className="opacity-70">Language:</span>
             <span className="text-on-surface">{browserInfo.language}</span>
           </div>
@@ -154,7 +175,8 @@ export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -
         </div>
         
         <div className="mt-4 pt-2 border-t border-on-surface-variant/20 text-[9px] text-on-surface-variant/60 text-center uppercase tracking-widest leading-relaxed">
-          This info is commonly visible to websites you visit.
+          This info is commonly visible to websites.
+          <span className="block mt-1.5 font-bold text-red-500/80 bg-red-500/5 p-1 rounded">Disclaimer: I DO NOT collect, save, or see this data. It stays locally in your browser.</span>
         </div>
         
         {/* Glitch overlay effect on hover */}
