@@ -40,7 +40,7 @@ export default function Desktop() {
       <div className="absolute inset-0 pointer-events-auto p-workspace-margin overflow-visible">
         <FolderItem 
           label="About Me" 
-          top="12%" left="15%" rotate={-4} w="w-24" h="h-20" path="/folder/about"
+          top="10%" left="30%" rotate={-4} w="w-24" h="h-20" path="/folder/about"
           peekItems={['Bio', 'Journey']}
         />
         <FolderItem 
@@ -50,7 +50,7 @@ export default function Desktop() {
         />
         <FolderItem 
           label="Freelance Profile" 
-          top="68%" left="15%" rotate={-7} w="w-28" h="h-22" path="/folder/freelance"
+          top="72%" left="12%" rotate={-7} w="w-28" h="h-22" path="/folder/freelance"
           peekItems={['Client Projects', 'Services']}
         />
         <FolderItem 
@@ -67,10 +67,10 @@ export default function Desktop() {
         {/* Scattered Decorative GIFs */}
         <img src={heckerGif} alt="Hecker gif" className="scattered-item w-24 h-24 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_6s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-6" style={{ top: '22%', left: '84%', transform: 'rotate(-12deg)' }} />
         <img src={scubaGif} alt="Scuba gif" className="scattered-item w-28 h-28 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_7s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:-rotate-12" style={{ top: '82%', left: '60%', transform: 'rotate(5deg)' }} />
-        <img src={businessGif} alt="Business gif" className="scattered-item w-28 h-28 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_8s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-12" style={{ top: '25%', left: '10%', transform: 'rotate(-8deg)' }} />
+        <img src={businessGif} alt="Business gif" className="scattered-item w-28 h-28 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_8s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-12" style={{ top: '45%', left: '8%', transform: 'rotate(-8deg)' }} />
         
         {/* Digital Footprint Card */}
-        <DigitalFootprint top="45%" left="8%" rotate={-4} />
+        <DigitalFootprint top="15%" left="5%" rotate={-2} />
       </div>
     </>
   );
