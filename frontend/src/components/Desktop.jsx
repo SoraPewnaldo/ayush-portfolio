@@ -40,10 +40,10 @@ export default function Desktop() {
 
         <h1 className={`font-display-xl text-primary flex flex-col items-center relative z-20 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-default drop-shadow-sm hover:drop-shadow-xl ${isMobile ? 'text-[5rem]' : 'text-display-xl'}`}>
           <div className="flex items-center gap-4" style={{ marginBottom: isMobile ? '-5px' : '-10px' }}>
-            <span className="italic text-on-surface-variant opacity-80 transition-colors hover:text-primary" style={{ fontSize: isMobile ? '0.5em' : '0.6em', lineHeight: '0.8' }}>ayush</span>
-            {!isMobile && <img src={sillyGif} alt="Silly gif" className="w-12 h-12 object-contain hover:animate-spin" />}
+            <span className="italic text-on-surface-variant opacity-80 transition-colors hover:text-primary" style={{ fontSize: isMobile ? '0.4em' : '0.6em', lineHeight: '0.8' }}>ayush</span>
+            {!isMobile && <img src={sillyGif} alt="Silly gif" className="w-16 h-16 object-contain animate-[float_3s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-12" />}
           </div>
-          <span className="tracking-tighter">portfolio</span>
+          <span className="font-bold tracking-tighter transition-colors hover:text-on-surface-variant" style={{ fontSize: isMobile ? '1em' : '1.5em', lineHeight: '0.8' }}>portfolio</span>
         </h1>
       </div>
 
