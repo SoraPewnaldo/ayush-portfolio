@@ -167,9 +167,9 @@ export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -
         </div>
         
         <div className="space-y-1 text-on-surface-variant/90 text-[10px]">
-          <div className="flex justify-between border-b border-on-surface-variant/10 pb-0.5 items-center">
-            <span className="opacity-70">IP Address:</span>
-            <span className="text-red-500 font-bold bg-red-500/10 px-1 py-0.5 rounded">{ipData.ip}</span>
+          <div className="flex justify-between border-b border-on-surface-variant/10 pb-0.5 items-start">
+            <span className="opacity-70 mt-0.5">IP:</span>
+            <span className="text-red-500 font-bold bg-red-500/10 px-1 py-0.5 rounded max-w-[160px] break-all text-right text-[9px] leading-tight">{ipData.ip}</span>
           </div>
           <div className="flex justify-between border-b border-on-surface-variant/10 pb-0.5">
             <span className="opacity-70">Browser:</span>
