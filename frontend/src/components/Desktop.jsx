@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import FolderItem from './FolderItem';
 import hiGif from '../assets/Hi.gif';
 import heckerGif from '../assets/Hecker.gif';
@@ -7,50 +7,10 @@ import businessGif from '../assets/bussiness.gif';
 import sillyGif from '../assets/silly.gif';
 
 import jobApplicationGif from '../assets/job-application.gif';
+import DigitalFootprint from './DigitalFootprint';
 
 export default function Desktop() {
   const resumeUrl = "/Ayush Dakwal Resume.pdf";
-  const [showTerminal, setShowTerminal] = useState(false);
-  const [terminalData, setTerminalData] = useState({
-    ip: 'Sniffing...',
-    city: 'Detecting...',
-    region: 'Locating...',
-    country: 'Scanning...',
-    isp: 'Tracing...'
-  });
-
-  useEffect(() => {
-    if (showTerminal) {
-      setTerminalData({
-        ip: 'Sniffing...',
-        city: 'Detecting...',
-        region: 'Locating...',
-        country: 'Scanning...',
-        isp: 'Tracing...'
-      });
-      fetch('https://ipapi.co/json/')
-        .then(res => res.json())
-        .then(data => {
-          setTerminalData({
-            ip: data.ip || 'Unknown',
-            city: data.city || 'Unknown',
-            region: data.region || 'Unknown',
-            country: data.country_name || 'Unknown',
-            isp: data.org || 'Unknown'
-          });
-        })
-        .catch(err => {
-          console.error(err);
-          setTerminalData({
-            ip: '127.0.0.1',
-            city: 'Local Host',
-            region: 'Loopback',
-            country: 'Intranet',
-            isp: 'Offline/Blocked'
-          });
-        });
-    }
-  }, [showTerminal]);
 
   return (
     <>
@@ -104,65 +64,14 @@ export default function Desktop() {
           <span className="font-label-caps text-label-caps text-on-surface mt-2 text-center w-24">resume.pdf</span>
         </a>
 
-        {/* Clickable Hecker GIF for cybersecurity doxxing gimmick */}
-        <div 
-          onClick={() => setShowTerminal(true)}
-          className="scattered-item w-24 flex flex-col items-center pointer-events-auto cursor-pointer group"
-          style={{ top: '22%', left: '84%', transform: 'rotate(-12deg)' }}
-        >
-          <div className="absolute -top-10 bg-slate-950 text-emerald-400 font-mono text-[10px] px-2 py-1 rounded border border-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-lg z-30">
-            dox_visitor.sh
-          </div>
-          <img src={heckerGif} alt="Hecker gif" className="w-24 h-24 object-contain drop-shadow-md transition-transform duration-300 group-hover:scale-125 group-hover:rotate-6" />
-          <span className="font-mono text-[10px] text-on-surface opacity-60 mt-1 select-none group-hover:opacity-100 group-hover:text-emerald-600 transition-colors">hecker.sh</span>
-        </div>
-
+        {/* Scattered Decorative GIFs */}
+        <img src={heckerGif} alt="Hecker gif" className="scattered-item w-24 h-24 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_6s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-6" style={{ top: '22%', left: '84%', transform: 'rotate(-12deg)' }} />
         <img src={scubaGif} alt="Scuba gif" className="scattered-item w-28 h-28 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_7s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:-rotate-12" style={{ top: '82%', left: '60%', transform: 'rotate(5deg)' }} />
         <img src={businessGif} alt="Business gif" className="scattered-item w-28 h-28 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_8s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-12" style={{ top: '25%', left: '10%', transform: 'rotate(-8deg)' }} />
+        
+        {/* Digital Footprint Card */}
+        <DigitalFootprint top="45%" left="8%" rotate={-4} />
       </div>
-
-      {/* Doxxed terminal panel */}
-      {showTerminal && (
-        <div className="fixed bottom-6 right-6 w-96 h-80 bg-slate-950 border-2 border-slate-800 rounded-lg shadow-2xl flex flex-col overflow-hidden z-50 font-mono text-sm text-emerald-400 pointer-events-auto select-text">
-          {/* Terminal Header */}
-          <div className="h-8 bg-slate-900 border-b border-slate-850 flex items-center justify-between px-3 select-none">
-            <div className="flex items-center gap-1.5">
-              <span className="w-3 h-3 rounded-full bg-red-500 cursor-pointer" onClick={() => setShowTerminal(false)}></span>
-              <span className="w-3 h-3 rounded-full bg-yellow-500"></span>
-              <span className="w-3 h-3 rounded-full bg-green-500"></span>
-            </div>
-            <span className="text-slate-400 text-xs font-semibold">dox_visitor.sh</span>
-            <button 
-              onClick={() => setShowTerminal(false)} 
-              className="text-slate-400 hover:text-white transition-colors text-xs font-bold px-1"
-            >
-              ✕
-            </button>
-          </div>
-          {/* Terminal Body */}
-          <div className="flex-grow p-4 space-y-2 overflow-y-auto leading-relaxed">
-            <div>
-              <span className="text-purple-400">hecker@sorapew.tech</span>:<span className="text-blue-400">~</span>$ ./dox_visitor.sh
-            </div>
-            <div className="text-slate-400 animate-[pulse_1.5s_infinite]">
-              [~] Sniffing network packets...
-            </div>
-            <div className="space-y-1 mt-2">
-              <div><span className="text-slate-500">[+]</span> IP ADDRESS: <span className="text-yellow-300 font-bold">{terminalData.ip}</span></div>
-              <div><span className="text-slate-500">[+]</span> CITY: <span className="text-white">{terminalData.city}</span></div>
-              <div><span className="text-slate-500">[+]</span> REGION: <span className="text-white">{terminalData.region}</span></div>
-              <div><span className="text-slate-500">[+]</span> COUNTRY: <span className="text-white">{terminalData.country}</span></div>
-              <div><span className="text-slate-500">[+]</span> ISP: <span className="text-white">{terminalData.isp}</span></div>
-            </div>
-            <div className="text-amber-400 font-bold mt-3">
-              [!] Target successfully doxxed! 😉
-            </div>
-            <div className="text-[10px] text-slate-500 pt-2 border-t border-slate-900 mt-4 leading-normal">
-              * No data is logged to any server. This is a purely client-side cybersecurity demonstration stunt.
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 }
