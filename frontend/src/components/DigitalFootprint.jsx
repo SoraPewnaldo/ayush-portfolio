@@ -15,6 +15,10 @@ export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -
   const dragRef = useRef(null);
 
   useEffect(() => {
+    setPosition({ top, left });
+  }, [top, left]);
+
+  useEffect(() => {
     // Fetch IP Data with fallback
     fetch('https://ipapi.co/json/')
       .then(res => {
