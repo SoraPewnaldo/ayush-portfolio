@@ -38,39 +38,39 @@ export default function Desktop() {
            </div>
         )}
 
-        <h1 className="font-display-xl text-display-xl text-primary flex flex-col items-center relative z-20 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-default drop-shadow-sm hover:drop-shadow-xl">
-          <div className="flex items-center gap-4" style={{ marginBottom: '-10px' }}>
-            <span className="italic text-on-surface-variant opacity-80 transition-colors hover:text-primary" style={{ fontSize: '0.6em', lineHeight: '0.8' }}>ayush</span>
-            <img src={sillyGif} alt="Silly gif" className="w-16 h-16 object-contain animate-[float_3s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-12" />
+        <h1 className={`font-display-xl text-primary flex flex-col items-center relative z-20 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-default drop-shadow-sm hover:drop-shadow-xl ${isMobile ? 'text-[5rem]' : 'text-display-xl'}`}>
+          <div className="flex items-center gap-4" style={{ marginBottom: isMobile ? '-5px' : '-10px' }}>
+            <span className="italic text-on-surface-variant opacity-80 transition-colors hover:text-primary" style={{ fontSize: isMobile ? '0.5em' : '0.6em', lineHeight: '0.8' }}>ayush</span>
+            {!isMobile && <img src={sillyGif} alt="Silly gif" className="w-12 h-12 object-contain hover:animate-spin" />}
           </div>
-          <span className="font-bold tracking-tighter transition-colors hover:text-on-surface-variant" style={{ fontSize: '1.5em', lineHeight: '0.8' }}>portfolio</span>
+          <span className="tracking-tighter">portfolio</span>
         </h1>
       </div>
 
       <div className="absolute inset-0 pointer-events-auto p-workspace-margin overflow-visible">
         <FolderItem 
           label="About Me" 
-          top={isMobile ? "55%" : "10%"} left={isMobile ? "15%" : "30%"} rotate={-4} w="w-24" h="h-20" path="/folder/about"
+          top={isMobile ? "55%" : "10%"} left={isMobile ? "15%" : "30%"} rotate={-4} w={isMobile ? "w-20" : "w-24"} h={isMobile ? "h-16" : "h-20"} path="/folder/about"
           peekItems={['Bio', 'Journey']}
         />
         <FolderItem 
           label="Academic Profile" 
-          top={isMobile ? "55%" : "18%"} left={isMobile ? "55%" : "72%"} rotate={5} w="w-28" h="h-22" path="/folder/academic"
+          top={isMobile ? "55%" : "18%"} left={isMobile ? "55%" : "72%"} rotate={5} w={isMobile ? "w-20" : "w-28"} h={isMobile ? "h-16" : "h-22"} path="/folder/academic"
           peekItems={['Research', 'Courses', 'Publications']}
         />
         <FolderItem 
           label="Freelance Profile" 
-          top={isMobile ? "72%" : "72%"} left={isMobile ? "15%" : "12%"} rotate={-7} w="w-28" h="h-22" path="/folder/freelance"
+          top={isMobile ? "72%" : "72%"} left={isMobile ? "15%" : "12%"} rotate={-7} w={isMobile ? "w-20" : "w-28"} h={isMobile ? "h-16" : "h-22"} path="/folder/freelance"
           peekItems={['Client Projects', 'Services']}
         />
         <FolderItem 
           label="Extracurricular profile" 
-          top={isMobile ? "72%" : "72%"} left={isMobile ? "55%" : "68%"} rotate={4} w="w-32" h="h-22" path="/folder/extracurricular"
+          top={isMobile ? "72%" : "72%"} left={isMobile ? "55%" : "68%"} rotate={4} w={isMobile ? "w-20" : "w-32"} h={isMobile ? "h-16" : "h-22"} path="/folder/extracurricular"
           peekItems={['Leadership', 'Sports', 'Clubs']}
         />
  
-        <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="scattered-item cursor-pointer flex flex-col items-center select-none z-10" style={{ top: isMobile ? '88%' : '48%', left: isMobile ? '35%' : '80%', transform: 'rotate(-5deg)' }}>
-          <img src={jobApplicationGif} alt="Resume/Job Application" className="w-20 h-20 object-contain drop-shadow-md transition-transform hover:scale-110" />
+        <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="scattered-item cursor-pointer flex flex-col items-center select-none z-10" style={{ top: isMobile ? '88%' : '48%', left: isMobile ? '40%' : '80%', transform: 'rotate(-5deg)' }}>
+          <img src={jobApplicationGif} alt="Resume/Job Application" className={`${isMobile ? 'w-16 h-16' : 'w-20 h-20'} object-contain drop-shadow-md transition-transform hover:scale-110`} />
           <span className="font-label-caps text-label-caps text-on-surface mt-2 text-center w-24">resume.pdf</span>
         </a>
 
@@ -84,7 +84,7 @@ export default function Desktop() {
         )}
         
         {/* Digital Footprint Card */}
-        <div style={{ transform: isMobile ? 'scale(0.85)' : 'none', transformOrigin: 'top left', position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
+        <div style={{ transform: isMobile ? 'scale(0.75)' : 'none', transformOrigin: 'top left', position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
           <div style={{ pointerEvents: 'auto', width: '100%', height: '100%' }}>
             <DigitalFootprint top={isMobile ? "2%" : "15%"} left={isMobile ? "8%" : "5%"} rotate={-2} />
           </div>
