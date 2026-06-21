@@ -23,3 +23,7 @@ lerna-debug.log*
 # System files
 .DS_Store
 Thumbs.db
+
+# Ignored Folders
+Assets/
+archive/
