@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
 import { motion } from 'framer-motion';
+import { contentData, projectsData } from '../data/portfolioData';
 
 export default function FolderPage() {
   const { category } = useParams();
@@ -16,17 +16,15 @@ export default function FolderPage() {
     if (category === 'about') catQuery = 'about';
     if (category === 'beyond-screen') catQuery = 'beyond-screen';
 
-    axios.get(`/api/content/${catQuery}`).then(res => {
-      if (res.data && res.data.length > 0) {
-        setContent(res.data[0]);
-      } else {
-        setContent(null);
-      }
-    });
+    const matchedContent = contentData.filter(c => c.category === catQuery);
+    if (matchedContent.length > 0) {
+      setContent(matchedContent[0]);
+    } else {
+      setContent(null);
+    }
 
-    axios.get(`/api/projects/${catQuery}`).then(res => {
-      setProjects(res.data);
-    });
+    const matchedProjects = projectsData.filter(p => p.category === catQuery).sort((a, b) => a.order - b.order);
+    setProjects(matchedProjects);
   }, [category]);
 
   return (
