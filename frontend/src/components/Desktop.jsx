@@ -69,7 +69,7 @@ export default function Desktop() {
           peekItems={['Leadership', 'Sports', 'Clubs']}
         />
  
-        <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="scattered-item cursor-pointer flex flex-col items-center select-none z-10" style={{ top: isMobile ? '88%' : '48%', left: isMobile ? '40%' : '80%', transform: 'rotate(-5deg)' }}>
+        <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="scattered-item cursor-pointer flex flex-col items-center select-none z-10 cursor-target" style={{ top: isMobile ? '88%' : '48%', left: isMobile ? '40%' : '80%', transform: 'rotate(-5deg)' }}>
           <img src={jobApplicationGif} alt="Resume/Job Application" className={`${isMobile ? 'w-16 h-16' : 'w-20 h-20'} object-contain drop-shadow-md transition-transform hover:scale-110`} />
           <span className="font-label-caps text-label-caps text-on-surface mt-2 text-center w-24">resume.pdf</span>
         </a>
@@ -77,9 +77,9 @@ export default function Desktop() {
         {/* Scattered Decorative GIFs - Hide on mobile to reduce clutter */}
         {!isMobile && (
           <>
-            <img src={heckerGif} alt="Hecker gif" className="scattered-item w-24 h-24 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_6s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-6" style={{ top: '22%', left: '84%', transform: 'rotate(-12deg)' }} />
-            <img src={scubaGif} alt="Scuba gif" className="scattered-item w-28 h-28 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_7s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:-rotate-12" style={{ top: '82%', left: '60%', transform: 'rotate(5deg)' }} />
-            <img src={businessGif} alt="Business gif" className="scattered-item w-28 h-28 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_8s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-12" style={{ top: '45%', left: '8%', transform: 'rotate(-8deg)' }} />
+            <img src={heckerGif} alt="Hecker gif" className="scattered-item w-24 h-24 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_6s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-6 cursor-target" style={{ top: '22%', left: '84%', transform: 'rotate(-12deg)' }} />
+            <img src={scubaGif} alt="Scuba gif" className="scattered-item w-28 h-28 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_7s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:-rotate-12 cursor-target" style={{ top: '82%', left: '60%', transform: 'rotate(5deg)' }} />
+            <img src={businessGif} alt="Business gif" className="scattered-item w-28 h-28 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_8s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-12 cursor-target" style={{ top: '45%', left: '8%', transform: 'rotate(-8deg)' }} />
           </>
         )}
         

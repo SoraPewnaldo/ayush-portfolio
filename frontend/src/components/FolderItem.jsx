@@ -60,7 +60,7 @@ export default function FolderItem({ label, top, left, rotate, path, w, h, iconP
   return (
     <div 
       ref={dragRef}
-      className="folder-wrapper cursor-pointer flex flex-col items-center group" 
+      className="folder-wrapper cursor-pointer flex flex-col items-center group cursor-target" 
       style={{ top, left, transform: `rotate(${rotate}deg)` }}
     >
       <div className="relative pointer-events-none">
