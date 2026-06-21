@@ -194,7 +194,7 @@ export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -
         </div>
         
         <div className="mt-2 pt-1.5 border-t border-on-surface-variant/20 text-[8px] text-on-surface-variant/60 text-center uppercase tracking-wider leading-tight">
-          <span className="block mt-1 font-bold text-red-500/80 bg-red-500/5 p-1 rounded">*Disclaimer: Not collected or saved. Stays locally in browser.*</span>
+          <span className="block mt-1 font-bold text-red-500/80 bg-red-500/5 p-1 rounded">*I don't collect this. IP fetched client-side via ipapi.co.*</span>
         </div>
         
         {/* Glitch overlay effect on hover */}
