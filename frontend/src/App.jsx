@@ -7,7 +7,6 @@ import AcademicPage from './pages/AcademicPage';
 import FreelancePage from './pages/FreelancePage';
 import ExtracurricularPage from './pages/ExtracurricularPage';
 import Antigravity from './components/Antigravity';
-import TargetCursor from './components/TargetCursor';
 
 function App() {
   const backgroundStars = useMemo(() => {
@@ -46,13 +45,6 @@ function App() {
 
   return (
     <Router>
-      <TargetCursor 
-        spinDuration={2}
-        hideDefaultCursor={true}
-        parallaxOn={true}
-        cursorColor="#FFD700"
-        cursorColorOnTarget="#FF8C00"
-      />
       <div className="fixed inset-0 pointer-events-none opacity-50 hidden md:block" style={{ zIndex: -2 }}>
         <Antigravity />
       </div>
