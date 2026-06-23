@@ -103,7 +103,17 @@ export default function AboutPage() {
         <div className="lg:col-span-5 space-y-12 lg:pt-8">
           {/* Quick Facts (Sticky Notes) */}
           <div className="p-8 rounded relative shadow-sm transform lg:rotate-2 transition-transform hover:rotate-0 duration-300" style={{ backgroundColor: 'rgba(214, 180, 140, 0.25)', backdropFilter: 'blur(4px)', border: '1px solid rgba(214, 180, 140, 0.4)' }}>
-            <img alt="Sticky note pin" className="absolute -top-5 -right-5 w-12 h-12" src="https://lh3.googleusercontent.com/aida/AP1WRLuGmZGNK6ZNposZ2KQOnLuG0u5WfvvFk-Tt9DBoLRoGLVLW0FjMStWudXiPZuGhyPdbvyfbeDimuslzi30B3hwbErycwag7CfBgc_ESSpaUFnfbYXhPJDkIQE7ySxJ8MIR9HIlkwdNFoylxe1vvtNE2pLq-VP5VDLXx1Jii19mWn4YScrskg8qLU9qR4sU_eEQ28LYArrMEUcKf0Ak3m-S9mBaoLYA2Cet4aiInclPm51hD3_zHu0tuoxY3"/>
+            <svg 
+              className="absolute -top-4 -right-4 w-10 h-10 drop-shadow-md select-none pointer-events-none transform rotate-[25deg]" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path 
+                d="M16 12C16 10.17 14.82 8.62 13 8.06V4H14C14.55 4 15 3.55 15 3C15 2.45 14.55 2 14 2H10C9.45 2 9 2.45 9 3C9 3.55 9.45 4 10 4H11V8.06C9.18 8.62 8 10.17 8 12C8 12.55 8.45 13 9 13H11V20C11 20.55 11.45 21 12 21C12.55 21 13 20.55 13 20V13H15C15.55 13 16 12.55 16 12Z" 
+                fill="#E94A47"
+              />
+            </svg>
             <h3 className="font-label-caps text-label-caps text-primary-container mb-4 border-b border-primary-container/20 pb-2">Vitals</h3>
             <ul className="space-y-3 font-caption text-caption text-on-secondary-container">
               <li><strong className="font-bold">Name:</strong> Ayush Dakwal</li>
