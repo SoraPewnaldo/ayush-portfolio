@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -3 }) {
+export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -3, isMobileLayout = false }) {
   const [ipData, setIpData] = useState({ ip: "Locating...", isp: "" });
   const [browserInfo, setBrowserInfo] = useState({
     browser: "Unknown",
@@ -148,11 +148,19 @@ export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -
 
   return (
     <div 
-      ref={dragRef}
-      className={`absolute cursor-move select-none z-10 transition-transform ${isDragging ? 'scale-105 z-50' : 'hover:scale-105'} group`}
-      style={{ top: position.top, left: position.left, transform: `rotate(${rotate}deg)` }}
+      ref={isMobileLayout ? null : dragRef}
+      className={
+        isMobileLayout
+          ? "relative w-full select-none group"
+          : `absolute cursor-move select-none z-10 transition-transform ${isDragging ? 'scale-105 z-50' : 'hover:scale-105'} group`
+      }
+      style={
+        isMobileLayout
+          ? { transform: `rotate(${rotate}deg)` }
+          : { top: position.top, left: position.left, transform: `rotate(${rotate}deg)` }
+      }
     >
-      <div className="bg-surface/90 border border-on-surface-variant/30 rounded-lg p-3 shadow-xl backdrop-blur-md min-w-[240px] max-w-[280px] font-mono text-[11px] relative overflow-hidden">
+      <div className={`bg-surface/90 border border-on-surface-variant/30 rounded-lg p-3 shadow-xl backdrop-blur-md font-mono text-[11px] relative overflow-hidden ${isMobileLayout ? 'w-full' : 'min-w-[240px] max-w-[280px]'}`}>
         {/* Terminal top bar */}
         <div className="flex items-center gap-1.5 mb-2 border-b border-on-surface-variant/20 pb-2">
           <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>

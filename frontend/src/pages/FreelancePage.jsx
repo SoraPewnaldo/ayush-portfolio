@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 
 export default function FreelancePage() {
   return (
-    <div className="text-[#5B2E2A] min-h-screen relative pt-12 pb-32 z-10" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/natural-paper.png"), radial-gradient(#d6c2c0 1px, transparent 1px)', backgroundSize: 'auto, 20px 20px' }}>
-      <Link to="/" className="fixed top-8 right-8 flex items-center gap-2 px-4 py-2 border border-[#5b2e2a] rounded-full text-[#5b2e2a] font-body-md hover:bg-[#5b2e2a] hover:text-white transition-all duration-300 active:scale-95 bg-surface/50 backdrop-blur-md z-50">
+    <div className="text-[#5B2E2A] min-h-screen relative pt-12 pb-32 overflow-x-hidden" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/natural-paper.png"), radial-gradient(#d6c2c0 1px, transparent 1px)', backgroundSize: 'auto, 20px 20px' }}>
+      <Link to="/" className="relative lg:fixed lg:top-8 lg:right-8 inline-flex mb-6 lg:mb-0 items-center gap-2 px-4 py-2 border border-[#5b2e2a] rounded-full text-[#5b2e2a] font-body-md hover:bg-[#5b2e2a] hover:text-white transition-all duration-300 active:scale-95 bg-surface/50 backdrop-blur-md z-50" style={{ minHeight: 44 }}>
         <span className="material-symbols-outlined text-[18px]">arrow_back</span>
         Back to Desktop
       </Link>
 
-      <main className="max-w-[1440px] mx-auto px-workspace-margin py-object-gap space-y-24">
+      <main className="max-w-[1440px] mx-auto px-4 md:px-workspace-margin py-object-gap space-y-16 md:space-y-24">
         {/* Hero Section */}
         <section className="relative pt-16 flex flex-col lg:flex-row items-start justify-between gap-12">
           <div className="max-w-4xl space-y-8 z-10">
             <div className="space-y-2">
               <span className="font-label-caps text-[#8A6A63] uppercase tracking-widest text-sm block">CREATIVE DIRECTORY // 002</span>
-              <h1 className="text-6xl md:text-[120px] font-display-xl font-bold text-primary leading-none tracking-tighter">
+              <h1 className="text-4xl sm:text-5xl md:text-[120px] font-display-xl font-bold text-primary leading-none tracking-tighter">
                 Freelance <span className="italic text-[#8A6A63] font-light">Profile</span>
               </h1>
             </div>

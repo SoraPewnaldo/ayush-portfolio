@@ -5,8 +5,8 @@ import ciscoLogo from '../assets/cisco.png';
 
 export default function AcademicPage() {
   return (
-    <div className="font-body-md text-on-surface min-h-screen overflow-x-hidden pt-32 pb-20 px-workspace-margin max-w-7xl mx-auto relative z-10">
-      <Link to="/" className="absolute top-8 right-8 flex items-center gap-2 px-4 py-2 border border-primary-container rounded-full text-primary-container font-body-md hover:bg-primary-container hover:text-white transition-all duration-300 active:scale-95 bg-surface/50 backdrop-blur-md z-50">
+    <div className="font-body-md text-on-surface min-h-screen overflow-x-hidden pt-16 md:pt-32 pb-20 px-4 md:px-workspace-margin max-w-7xl mx-auto relative z-10">
+      <Link to="/" className="relative md:absolute md:top-8 md:right-8 inline-flex mb-6 md:mb-0 items-center gap-2 px-4 py-2 border border-primary-container rounded-full text-primary-container font-body-md hover:bg-primary-container hover:text-white transition-all duration-300 active:scale-95 bg-surface/50 backdrop-blur-md z-50" style={{ minHeight: 44 }}>
         <span className="material-symbols-outlined text-[18px]">arrow_back</span>
         Back to Desktop
       </Link>
@@ -14,7 +14,7 @@ export default function AcademicPage() {
       {/* Header Section */}
       <header className="mb-16 relative">
         <div className="max-w-3xl">
-          <h1 className="text-6xl md:text-[135px] font-display-xl font-bold text-primary leading-none mb-6 tracking-tighter">
+          <h1 className="text-4xl sm:text-5xl md:text-[135px] font-display-xl font-bold text-primary leading-none mb-6 tracking-tighter">
             Academic <br/> &amp; Research.
           </h1>
           <p className="font-body-lg text-secondary leading-relaxed mb-8 border-l-4 border-accent-sand pl-6 italic">

@@ -11,19 +11,19 @@ import bharatMandapam from '../assets/bharat_mandapam.jpg';
 
 export default function ExtracurricularPage() {
   return (
-    <div className="text-on-surface antialiased min-h-screen pt-24 pb-32 relative z-10">
-      <Link to="/" className="absolute top-8 right-8 flex items-center gap-2 px-4 py-2 border border-primary-container rounded-full text-primary-container font-body-md hover:bg-primary-container hover:text-white transition-all duration-300 active:scale-95 bg-surface/50 backdrop-blur-md z-50">
+    <div className="text-on-surface antialiased min-h-screen pt-16 md:pt-24 pb-32 relative z-10 overflow-x-hidden">
+      <Link to="/" className="relative md:absolute md:top-8 md:right-8 inline-flex mb-6 md:mb-0 items-center gap-2 px-4 py-2 border border-primary-container rounded-full text-primary-container font-body-md hover:bg-primary-container hover:text-white transition-all duration-300 active:scale-95 bg-surface/50 backdrop-blur-md z-50" style={{ minHeight: 44 }}>
         <span className="material-symbols-outlined text-[18px]">arrow_back</span>
         Back to Desktop
       </Link>
 
-      <main className="max-w-[1400px] mx-auto px-workspace-margin relative">
+      <main className="max-w-[1400px] mx-auto px-4 md:px-workspace-margin relative">
         {/* Header Section */}
-        <header className="mb-24 mt-12 relative max-w-4xl">
+        <header className="mb-16 md:mb-24 mt-6 md:mt-12 relative max-w-4xl">
           <svg className="absolute -top-12 -left-8 w-12 h-12 text-accent-sand animate-pulse" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor"/>
           </svg>
-          <h1 className="text-6xl md:text-[135px] font-display-xl font-bold text-primary mb-8 leading-none tracking-tighter">
+          <h1 className="text-4xl sm:text-5xl md:text-[135px] font-display-xl font-bold text-primary mb-6 md:mb-8 leading-none tracking-tighter">
               Beyond the Screen
           </h1>
           <div className="font-body-lg text-on-surface-variant max-w-2xl leading-relaxed relative z-10 p-8 bg-surface-container-low rounded-xl shadow-sm border border-surface-variant" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")" }}>

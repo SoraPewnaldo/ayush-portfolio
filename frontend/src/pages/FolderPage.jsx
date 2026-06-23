@@ -33,10 +33,10 @@ export default function FolderPage() {
         initial={{ opacity: 0, y: 20, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
-        className="w-full max-w-5xl bg-surface-container-low min-h-[80vh] rounded-xl shadow-xl border border-outline-variant p-8 md:p-12 relative"
+        className="w-full max-w-5xl bg-surface-container-low min-h-[80vh] rounded-xl shadow-xl border border-outline-variant p-4 sm:p-8 md:p-12 relative"
       >
         <div className="flex justify-between items-center border-b border-outline-variant pb-4 mb-8">
-          <h1 className="font-display-xl-mobile text-display-xl-mobile text-primary capitalize">{category.replace('-', ' ')}</h1>
+          <h1 className="font-display-xl-mobile text-display-xl-mobile text-primary capitalize break-words">{category.replace('-', ' ')}</h1>
           <Link to="/" className="text-on-surface-variant hover:text-primary transition-colors"><span className="material-symbols-outlined text-4xl">close</span></Link>
         </div>
 

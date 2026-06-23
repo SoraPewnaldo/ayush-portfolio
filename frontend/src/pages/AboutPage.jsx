@@ -6,16 +6,16 @@ import rangmanch from '../assets/rangmanch.jpeg';
 
 export default function AboutPage() {
   return (
-    <div className="text-primary font-body-md min-h-screen relative pb-32 pt-32 px-workspace-margin max-w-7xl mx-auto z-10">
-      <Link to="/" className="absolute top-8 right-8 flex items-center gap-2 px-4 py-2 border border-primary-container rounded-full text-primary-container font-body-md hover:bg-primary-container hover:text-white transition-all duration-300 active:scale-95 bg-surface/50 backdrop-blur-md z-50">
+    <div className="text-primary font-body-md min-h-screen relative pb-16 pt-16 md:pb-32 md:pt-32 px-4 md:px-workspace-margin max-w-7xl mx-auto z-10 overflow-x-hidden">
+      <Link to="/" className="relative md:absolute md:top-8 md:right-8 inline-flex mb-6 md:mb-0 items-center gap-2 px-4 py-2 border border-primary-container rounded-full text-primary-container font-body-md hover:bg-primary-container hover:text-white transition-all duration-300 active:scale-95 bg-surface/50 backdrop-blur-md z-50" style={{ minHeight: 44 }}>
         <span className="material-symbols-outlined text-[18px]">arrow_back</span>
         Back to Desktop
       </Link>
       
       {/* Header */}
-      <header className="mb-24 relative z-10">
+      <header className="mb-12 md:mb-24 relative z-10">
         <div className="flex items-end gap-4 mb-4">
-          <h1 className="text-5xl md:text-[135px] font-display-xl font-bold text-primary leading-none">About Me</h1>
+          <h1 className="text-4xl sm:text-5xl md:text-[135px] font-display-xl font-bold text-primary leading-none">About Me</h1>
           <img alt="Shinchan" className="w-12 h-12 md:w-16 md:h-16 mb-2 md:mb-4 hover:scale-110 transition-transform duration-300" src={shinchan}/>
         </div>
         <p className="font-body-lg text-secondary max-w-2xl mt-4">A B.Tech Computer Science student specializing in Cybersecurity, bridging the gap between digital defense, intelligent algorithms, and creative expression.</p>
@@ -34,7 +34,7 @@ export default function AboutPage() {
             <p className="font-body-md text-on-surface-variant leading-relaxed">
               I am a Computer Science undergraduate at NIIT University with a strong focus on Cybersecurity and AI. Driven by a passion for solving complex digital challenges, my academic and project experiences span deep learning applications, forensic AI, and deepfake detection systems. I aim to contribute to the future of digital forensics and secure AI architectures, combining analytical rigor with technical expertise to build resilient, reliable software systems.
             </p>
-            <div className="mt-6 w-full h-[520px] rounded bg-surface-variant relative overflow-hidden group">
+            <div className="mt-6 w-full h-64 sm:h-96 md:h-[520px] rounded bg-surface-variant relative overflow-hidden group">
               <div className="absolute inset-0 bg-cover transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(${Ayush})`, backgroundPosition: 'center 50%' }}></div>
             </div>
           </div>
