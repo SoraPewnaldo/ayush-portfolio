@@ -30,6 +30,46 @@ export default function Desktop() {
             <span className="italic text-on-surface-variant opacity-80" style={{ fontSize: '2rem' }}>ayush</span>
             <span className="font-bold tracking-tighter" style={{ fontSize: '4.5rem', lineHeight: '1' }}>portfolio</span>
           </h1>
+          {/* Terminal Block */}
+          <div className="mt-6 pointer-events-auto select-text flex flex-col w-full max-w-[320px] text-left bg-surface/90 border border-on-surface-variant/20 rounded-lg p-3.5 shadow-xl backdrop-blur-md font-mono text-[10.5px] leading-relaxed mx-auto">
+            <div className="flex items-center gap-1.5 mb-2.5 border-b border-on-surface-variant/15 pb-2">
+              <div className="w-2 h-2 rounded-full bg-[#E94A47] opacity-80"></div>
+              <div className="w-2 h-2 rounded-full bg-[#E5BEB5] opacity-80"></div>
+              <div className="w-2 h-2 rounded-full bg-[#9FD1BB] opacity-80"></div>
+              <span className="ml-2 font-bold text-[8.5px] text-on-surface-variant/70 tracking-widest uppercase">whoami.sh</span>
+            </div>
+            
+            <div className="space-y-1.5 text-on-surface-variant">
+              <div>
+                <span className="text-folder-cyan font-bold">ayush@portfolio</span>
+                <span className="text-on-surface-variant">:</span>
+                <span className="text-[#D6B48C]">~</span>
+                <span className="text-primary font-bold">$</span> cat info.txt
+              </div>
+              <div className="text-primary font-bold text-xs pb-1 flex items-center justify-between">
+                <span>Ayush Dakwal</span>
+                <span className="text-[9px] text-secondary font-normal uppercase tracking-wider">NIIT University</span>
+              </div>
+              <div className="space-y-1 text-on-surface-variant/90 border-t border-on-surface-variant/10 pt-1.5">
+                <div className="flex items-start gap-1">
+                  <span className="text-primary font-bold">»</span>
+                  <span>Aspiring SOC Analyst &amp; Penetration Tester</span>
+                </div>
+                <div className="flex items-start gap-1">
+                  <span className="text-primary font-bold">»</span>
+                  <span>Secretary @ Rangmanch NU (Theatre)</span>
+                </div>
+                <div className="flex items-start gap-1">
+                  <span className="text-primary font-bold">»</span>
+                  <span>Freelance Video Editor &amp; Graphic Designer</span>
+                </div>
+                <div className="flex items-start gap-1">
+                  <span className="text-primary font-bold">»</span>
+                  <span className="text-[10px] opacity-80">Python • Linux • Adobe Premiere Pro</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Folder Grid */}
@@ -91,13 +131,13 @@ export default function Desktop() {
     );
   }
 
-  // ─── DESKTOP LAYOUT (unchanged) ───────────────────────────────────────────────
+  // ─── DESKTOP LAYOUT (unchanged except for intro) ───────────────────────────────
   return (
     <>
       <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none z-0`}>
         
         {/* Cute Hi + Image section */}
-        <div className="absolute -top-32 -left-32 flex flex-col items-center transform -rotate-12 z-10">
+        <div className="absolute -top-18 -left-44 flex flex-col items-center transform -rotate-12 z-10">
            <div className="relative w-full flex justify-start pl-4">
              <span className="font-handwriting text-5xl text-accent-sand">Hi!</span>
              <svg width="60" height="80" viewBox="0 0 100 120" fill="none" className="absolute left-16 top-4 overflow-visible">
@@ -115,6 +155,47 @@ export default function Desktop() {
           </div>
           <span className="font-bold tracking-tighter transition-colors hover:text-on-surface-variant" style={{ fontSize: '1.5em', lineHeight: '0.8' }}>portfolio</span>
         </h1>
+
+        {/* Terminal Block */}
+        <div className="mt-6 pointer-events-auto select-text relative z-30 w-[320px] text-left animate-[float_5s_ease-in-out_infinite] bg-surface/90 border border-on-surface-variant/20 rounded-lg p-3.5 shadow-xl backdrop-blur-md font-mono text-[10.5px] leading-relaxed mx-auto">
+          <div className="flex items-center gap-1.5 mb-2.5 border-b border-on-surface-variant/15 pb-2">
+            <div className="w-2 h-2 rounded-full bg-[#E94A47] opacity-80"></div>
+            <div className="w-2 h-2 rounded-full bg-[#E5BEB5] opacity-80"></div>
+            <div className="w-2 h-2 rounded-full bg-[#9FD1BB] opacity-80"></div>
+            <span className="ml-2 font-bold text-[8.5px] text-on-surface-variant/70 tracking-widest uppercase">whoami.sh</span>
+          </div>
+          
+          <div className="space-y-1.5 text-on-surface-variant">
+            <div>
+              <span className="text-folder-cyan font-bold">ayush@portfolio</span>
+              <span className="text-on-surface-variant">:</span>
+              <span className="text-[#D6B48C]">~</span>
+              <span className="text-primary font-bold">$</span> cat info.txt
+            </div>
+            <div className="text-primary font-bold text-xs pb-1 flex items-center justify-between">
+              <span>Ayush Dakwal</span>
+              <span className="text-[9px] text-secondary font-normal uppercase tracking-wider">NIIT University</span>
+            </div>
+            <div className="space-y-1 text-on-surface-variant/90 border-t border-on-surface-variant/10 pt-1.5">
+              <div className="flex items-start gap-1">
+                <span className="text-primary font-bold">»</span>
+                <span>Aspiring SOC Analyst &amp; Penetration Tester</span>
+              </div>
+              <div className="flex items-start gap-1">
+                <span className="text-primary font-bold">»</span>
+                <span>Secretary @ Rangmanch NU (Theatre)</span>
+              </div>
+              <div className="flex items-start gap-1">
+                <span className="text-primary font-bold">»</span>
+                <span>Freelance Video Editor &amp; Graphic Designer</span>
+              </div>
+              <div className="flex items-start gap-1">
+                <span className="text-primary font-bold">»</span>
+                <span className="text-[10px] opacity-80">Python • Linux • Adobe Premiere Pro</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="absolute inset-0 pointer-events-auto p-workspace-margin overflow-visible">

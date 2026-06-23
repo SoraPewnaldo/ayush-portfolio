@@ -25,5 +25,5 @@ lerna-debug.log*
 Thumbs.db
 
 # Ignored Folders
-Assets/
-archive/
+/Assets/
+/archive/

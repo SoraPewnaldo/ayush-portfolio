@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import academicBook from '../assets/academic_book.jpg';
 import ciscoLogo from '../assets/cisco.png';
+import forensicArchImg from '../assets/forensic_architecture.png';
+import forensicRocImg from '../assets/forensic_roc.png';
+import forensicConfImg from '../assets/forensic_confusion_matrix.png';
+import ztHeroImg from '../assets/zero_trust_hero.png';
+import ztVerificationImg from '../assets/zero_trust_verification.png';
 
 export default function AcademicPage() {
+  const [forensicTab, setForensicTab] = useState('arch'); // 'arch' | 'metrics' | 'demo'
+  const [ztTab, setZtTab] = useState('flow'); // 'flow' | 'dashboard'
+  const [ztFirewall, setZtFirewall] = useState(true);
+  const [ztOSChecked, setZtOSChecked] = useState(true);
+  const [ztPatched, setZtPatched] = useState(true);
+  const [zoomImage, setZoomImage] = useState(null);
+
+  let ztScore = 95;
+  if (!ztFirewall) ztScore -= 30;
+  if (!ztOSChecked) ztScore -= 20;
+  if (!ztPatched) ztScore -= 15;
+
   return (
     <div className="font-body-md text-on-surface min-h-screen overflow-x-hidden pt-16 md:pt-32 pb-20 px-4 md:px-workspace-margin max-w-7xl mx-auto relative z-10">
       <Link to="/" className="relative md:absolute md:top-8 md:right-8 inline-flex mb-6 md:mb-0 items-center gap-2 px-4 py-2 border border-primary-container rounded-full text-primary-container font-body-md hover:bg-primary-container hover:text-white transition-all duration-300 active:scale-95 bg-surface/50 backdrop-blur-md z-50" style={{ minHeight: 44 }}>
@@ -71,6 +88,113 @@ export default function AcademicPage() {
                   <li>Evaluated metrics: achieved high cross-dataset generalization (AUC up to ~0.97), CLLR, and HTER.</li>
                   <li>Enhanced forensic reliability using likelihood ratio calibration.</li>
                 </ul>
+
+                {/* Interactive Showcase Panel */}
+                <div className="mt-4 bg-surface-container/50 border border-outline-variant/60 rounded-xl overflow-hidden max-w-2xl">
+                  {/* Tab headers */}
+                  <div className="flex bg-surface-container-high border-b border-outline-variant/60 font-mono text-[10px]">
+                    {[
+                      { id: 'arch', label: 'Model Architecture', icon: 'account_tree' },
+                      { id: 'metrics', label: 'Evaluation Metrics & Curves', icon: 'monitoring' }
+                    ].map(t => (
+                      <button
+                        key={t.id}
+                        onClick={() => setForensicTab(t.id)}
+                        className={`flex items-center gap-1.5 px-4 py-2.5 border-r border-outline-variant/40 hover:bg-surface-container transition-colors ${forensicTab === t.id ? 'bg-surface font-semibold text-primary border-b-2 border-b-primary' : 'text-on-surface-variant/80'}`}
+                      >
+                        <span className="material-symbols-outlined text-xs">{t.icon}</span>
+                        {t.label}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Tab contents */}
+                  <div className="p-4 font-mono text-[10.5px] leading-relaxed text-on-surface-variant">
+                    {forensicTab === 'arch' && (
+                      <div className="space-y-4">
+                        <div className="text-[10px] text-secondary uppercase font-bold tracking-wider mb-1">Vision Transformer (ViT) Architecture</div>
+                        
+                        {/* Real Diagram Image */}
+                        <div className="border border-outline-variant/40 rounded-lg overflow-hidden bg-white p-2 cursor-zoom-in" onClick={() => setZoomImage(forensicArchImg)}>
+                          <img 
+                            src={forensicArchImg} 
+                            alt="Forensic AI Model Architecture (Click to expand)" 
+                            className="w-full h-auto object-contain max-h-[320px] transition-transform hover:scale-[1.02]"
+                          />
+                        </div>
+                        
+                        <div className="flex flex-col sm:flex-row items-center gap-2 text-center text-[9px] mt-2">
+                          <div className="bg-surface border border-outline-variant/60 px-2 py-1 rounded w-full sm:w-auto">
+                            <span className="font-bold block text-primary">Input Video</span>
+                            <span className="text-[7.5px] opacity-75">30 fps frames</span>
+                          </div>
+                          <span className="text-secondary font-bold rotate-90 sm:rotate-0">→</span>
+                          <div className="bg-surface border border-outline-variant/60 px-2 py-1 rounded w-full sm:w-auto">
+                            <span className="font-bold block text-primary">Face Extraction</span>
+                            <span className="text-[7.5px] opacity-75">MTCNN Detector</span>
+                          </div>
+                          <span className="text-secondary font-bold rotate-90 sm:rotate-0">→</span>
+                          <div className="bg-surface border border-outline-variant/60 px-2 py-1 rounded w-full sm:w-auto">
+                            <span className="font-bold block text-primary">ViT-Base</span>
+                            <span className="text-[7.5px] opacity-75">12 attention blocks</span>
+                          </div>
+                          <span className="text-secondary font-bold rotate-90 sm:rotate-0">→</span>
+                          <div className="bg-primary/5 border border-primary/20 text-primary px-2 py-1 rounded w-full sm:w-auto font-bold">
+                            <span>Likelihood Calibration</span>
+                            <span className="text-[7.5px] block opacity-90">Real / Deepfake</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {forensicTab === 'metrics' && (
+                      <div className="space-y-4">
+                        <div className="text-[10px] text-secondary uppercase font-bold tracking-wider mb-1">Real Test Results &amp; Model Evaluation</div>
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          {/* Metrics stats */}
+                          <div className="space-y-3">
+                            {[
+                              { name: 'FaceForensics++ (FFPP)', auc: 99.12, eer: 6.62, color: 'bg-[#9FD1BB]' },
+                              { name: 'Celeb-DF (V2)', auc: 97.31, eer: 8.60, color: 'bg-[#9FD1BB]' },
+                              { name: 'WildDeepfake', auc: 90.60, eer: 16.49, color: 'bg-[#E5BEB5]' }
+                            ].map(bar => (
+                              <div key={bar.name} className="space-y-1">
+                                <div className="flex justify-between font-bold text-[9.5px]">
+                                  <span>{bar.name}</span>
+                                  <span className="text-primary">{bar.auc}% AUC</span>
+                                </div>
+                                <div className="w-full bg-surface-container-high h-2 rounded overflow-hidden border border-outline-variant/40">
+                                  <div className={`${bar.color} h-full`} style={{ width: `${bar.auc}%` }}></div>
+                                </div>
+                                <div className="text-[8px] opacity-75">Equal Error Rate (EER): {bar.eer}%</div>
+                              </div>
+                            ))}
+                          </div>
+                          
+                          {/* Visual Curves */}
+                          <div className="border border-outline-variant/40 rounded-lg overflow-hidden bg-white p-1.5 flex flex-col justify-center items-center cursor-zoom-in" onClick={() => setZoomImage(forensicRocImg)}>
+                            <span className="text-[8px] font-bold text-secondary mb-1">Test ROC Curves (Click to expand)</span>
+                            <img 
+                              src={forensicRocImg} 
+                              alt="Forensic AI ROC Curves" 
+                              className="w-full h-auto object-contain max-h-[200px] transition-transform hover:scale-[1.02]"
+                            />
+                          </div>
+                        </div>
+                        
+                        <div className="border border-outline-variant/40 rounded-lg overflow-hidden bg-white p-2 flex flex-col justify-center items-center cursor-zoom-in" onClick={() => setZoomImage(forensicConfImg)}>
+                          <span className="text-[8px] font-bold text-secondary mb-1">Confusion Matrix (Click to expand)</span>
+                          <img 
+                            src={forensicConfImg} 
+                            alt="Confusion Matrix" 
+                            className="w-full h-auto object-contain max-h-[220px] transition-transform hover:scale-[1.02]"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
 
               {/* Project 2 */}
@@ -91,9 +215,166 @@ export default function AcademicPage() {
                   <li>Integrated and tested using OSQuery, Nmap, Docker, Docker Compose, GitHub Actions (CI/CD), and REST APIs.</li>
                   <li>Dynamically evaluates device security postures to grant/deny secure network access.</li>
                 </ul>
+
+                {/* Interactive Zero Trust Showcase */}
+                <div className="mt-4 bg-surface-container/50 border border-outline-variant/60 rounded-xl overflow-hidden max-w-2xl">
+                  {/* Tab headers */}
+                  <div className="flex bg-surface-container-high border-b border-outline-variant/60 font-mono text-[10px]">
+                    {[
+                      { id: 'flow', label: 'Architecture & Verification', icon: 'account_tree' },
+                      { id: 'dashboard', label: 'Trust Engine Simulator', icon: 'admin_panel_settings' }
+                    ].map(t => (
+                      <button
+                        key={t.id}
+                        onClick={() => setZtTab(t.id)}
+                        className={`flex items-center gap-1.5 px-4 py-2.5 border-r border-outline-variant/40 hover:bg-surface-container transition-colors ${ztTab === t.id ? 'bg-surface font-semibold text-primary border-b-2 border-b-primary' : 'text-on-surface-variant/80'}`}
+                      >
+                        <span className="material-symbols-outlined text-xs">{t.icon}</span>
+                        {t.label}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Tab contents */}
+                  <div className="p-4 font-mono text-[10.5px] leading-relaxed text-on-surface-variant">
+                    {ztTab === 'flow' && (
+                      <div className="space-y-4">
+                        <div className="text-[10px] text-secondary uppercase font-bold tracking-wider mb-1">Access Flow &amp; UI Verification</div>
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="border border-outline-variant/40 rounded-lg overflow-hidden bg-white p-1 cursor-zoom-in" onClick={() => setZoomImage(ztHeroImg)}>
+                            <span className="text-[8px] font-bold text-secondary block text-center mb-1">Landing Dashboard (Click to expand)</span>
+                            <img 
+                              src={ztHeroImg} 
+                              alt="Zero Trust Hero Page" 
+                              className="w-full h-auto object-contain max-h-[200px] transition-transform hover:scale-[1.02]"
+                            />
+                          </div>
+
+                          <div className="border border-outline-variant/40 rounded-lg overflow-hidden bg-white p-1 cursor-zoom-in" onClick={() => setZoomImage(ztVerificationImg)}>
+                            <span className="text-[8px] font-bold text-secondary block text-center mb-1">OSQuery Verification UI (Click to expand)</span>
+                            <img 
+                              src={ztVerificationImg} 
+                              alt="Zero Trust Verification UI" 
+                              className="w-full h-auto object-contain max-h-[200px] transition-transform hover:scale-[1.02]"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="flex flex-col sm:flex-row items-center gap-2 text-center text-[9.5px] mt-2">
+                          <div className="bg-surface border border-outline-variant/60 p-2 rounded w-full sm:w-28">
+                            <span className="font-bold block text-primary">1. Client Device</span>
+                            <span className="text-[8px] opacity-75">Access Request</span>
+                          </div>
+                          <span className="text-secondary font-bold rotate-90 sm:rotate-0">→</span>
+                          <div className="bg-surface border border-outline-variant/60 p-2 rounded w-full sm:w-32">
+                            <span className="font-bold block text-primary">2. Policy Agent</span>
+                            <span className="text-[8px] opacity-75">OSQuery Posture Check</span>
+                          </div>
+                          <span className="text-secondary font-bold rotate-90 sm:rotate-0">→</span>
+                          <div className="bg-surface border border-outline-variant/60 p-2 rounded w-full sm:w-32 flex flex-col items-center">
+                            <span className="font-bold text-primary flex items-center gap-0.5"><span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span> Trust Scoring</span>
+                            <span className="text-[8px] opacity-75">Calculates Risk Index</span>
+                          </div>
+                          <span className="text-secondary font-bold rotate-90 sm:rotate-0">→</span>
+                          <div className="bg-primary/5 border border-primary/20 text-primary p-2 rounded w-full sm:w-28 font-bold">
+                            <span>4. Decision</span>
+                            <span className="text-[8px] block opacity-90">Gateway Grant/Deny</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {ztTab === 'dashboard' && (
+                      <div className="space-y-4">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-outline-variant/30 pb-2">
+                          <span className="text-[10px] text-secondary uppercase font-bold tracking-wider">Live Security Posture Simulator</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[9px] font-bold text-on-surface-variant/80">Trust Index:</span>
+                            <span className={`px-2 py-0.5 rounded font-bold ${ztScore >= 70 ? 'bg-[#9FD1BB]/30 text-green-700' : 'bg-red-500/10 text-red-600'}`}>{ztScore}/100</span>
+                            <span className={`px-2 py-0.5 rounded font-bold text-[9px] ${ztScore >= 70 ? 'bg-[#9FD1BB] text-on-tertiary-fixed-variant' : 'bg-[#E94A47] text-white animate-pulse'}`}>{ztScore >= 70 ? 'GRANTED' : 'DENIED'}</span>
+                          </div>
+                        </div>
+
+                        {/* Interactive toggles */}
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                          <label className="flex items-center gap-2 bg-surface p-2 rounded border border-outline-variant/40 hover:bg-surface-container/30 cursor-pointer select-none">
+                            <input 
+                              type="checkbox" 
+                              checked={ztFirewall} 
+                              onChange={(e) => setZtFirewall(e.target.checked)} 
+                              className="accent-primary"
+                            />
+                            <div className="flex flex-col">
+                              <span className="font-bold">Firewall Enabled</span>
+                              <span className="text-[8px] opacity-75">{ztFirewall ? 'Active' : 'Missing (-30 pts)'}</span>
+                            </div>
+                          </label>
+
+                          <label className="flex items-center gap-2 bg-surface p-2 rounded border border-outline-variant/40 hover:bg-surface-container/30 cursor-pointer select-none">
+                            <input 
+                              type="checkbox" 
+                              checked={ztOSChecked} 
+                              onChange={(e) => setZtOSChecked(e.target.checked)} 
+                              className="accent-primary"
+                            />
+                            <div className="flex flex-col">
+                              <span className="font-bold">OS Verified</span>
+                              <span className="text-[8px] opacity-75">{ztOSChecked ? 'Trusted' : 'Outdated (-20 pts)'}</span>
+                            </div>
+                          </label>
+
+                          <label className="flex items-center gap-2 bg-surface p-2 rounded border border-outline-variant/40 hover:bg-surface-container/30 cursor-pointer select-none">
+                            <input 
+                              type="checkbox" 
+                              checked={ztPatched} 
+                              onChange={(e) => setZtPatched(e.target.checked)} 
+                              className="accent-primary"
+                            />
+                            <div className="flex flex-col">
+                              <span className="font-bold">Security Patched</span>
+                              <span className="text-[8px] opacity-75">{ztPatched ? 'Latest' : 'Vulnerable (-15 pts)'}</span>
+                            </div>
+                          </label>
+                        </div>
+
+                        {/* Terminal status display */}
+                        <div className="bg-inverse-surface text-surface-bright rounded p-2.5 font-mono text-[9px] space-y-1">
+                          <div className="text-secondary-fixed opacity-60"># query_posture_status</div>
+                          <div>&gt; Firewall status: <span className={ztFirewall ? 'text-[#9FD1BB]' : 'text-[#E94A47]'}>{ztFirewall ? 'ACTIVE (SECURE)' : 'INACTIVE (ALERT)'}</span></div>
+                          <div>&gt; OS Signature: <span className={ztOSChecked ? 'text-[#9FD1BB]' : 'text-[#E94A47]'}>{ztOSChecked ? 'VERIFIED (TRUSTED)' : 'COMPROMISED (VULNERABLE)'}</span></div>
+                          <div>&gt; Security patches: <span className={ztPatched ? 'text-[#9FD1BB]' : 'text-[#E94A47]'}>{ztPatched ? 'UP TO DATE' : 'OUT OF DATE'}</span></div>
+                          <div className="pt-1.5 border-t border-surface-variant/10 text-accent-sand font-bold">
+                            &gt;&gt; Gateway Connection: {ztScore >= 70 ? 'SUCCESSFULLY ESTABLISHED.' : 'ACCESS DENIED: DEVICE OUTSIDE SECURITY POLICY.'}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
 
               {/* Project 3 */}
+              <div className="group border-l-2 border-accent-sand/40 pl-5 space-y-2">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 className="font-bold text-lg text-primary">Gmail Campaigner: Open-Source Email Outreach</h3>
+                  <div className="flex gap-3">
+                    <a href="https://github.com/SoraPewnaldo/Gmail-Campaigner" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-folder-cyan hover:underline font-label-caps font-semibold">
+                      <span className="material-symbols-outlined text-xs">code</span> Github
+                    </a>
+                  </div>
+                </div>
+                <p className="font-body-md text-on-surface-variant/90 leading-relaxed">
+                  Developed a lightweight, self-hosted Python outreach tool utilizing the official Google Gmail API for personalized email marketing campaigns.
+                </p>
+                <ul className="list-disc pl-5 space-y-1 font-body-sm text-on-surface-variant/80">
+                  <li>Sends personalized HTML outreach emails from CSV list inputs with dynamic placeholder replacement.</li>
+                  <li>Implements template rotation with support for random delays to mimic human behavior and avoid email filtering blocks.</li>
+                  <li>Features optional email open tracking and unsubscribe flow handling using Google Apps Script.</li>
+                </ul>
+              </div>
+
+              {/* Project 4 */}
               <div className="group border-l-2 border-accent-sand/40 pl-5 space-y-2">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <h3 className="font-bold text-lg text-primary">Smart Fitness and Exercise Tracker</h3>
@@ -302,6 +583,20 @@ export default function AcademicPage() {
           </div>
         </aside>
       </div>
+
+      {/* Lightbox Zoom Modal */}
+      {zoomImage && (
+        <div 
+          className="fixed inset-0 bg-black/80 backdrop-blur-md z-[999] flex items-center justify-center p-4 cursor-zoom-out"
+          onClick={() => setZoomImage(null)}
+        >
+          <img 
+            src={zoomImage} 
+            alt="Zoomed view" 
+            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl border border-white/10 animate-fade-in" 
+          />
+        </div>
+      )}
     </div>
   );
 }

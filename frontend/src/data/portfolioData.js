@@ -90,6 +90,19 @@ export const projectsData = [
     order: 3
   },
   {
+    _id: '11',
+    title: 'Gmail Campaigner',
+    slug: 'gmail-campaigner',
+    description: 'Personalized email outreach sender using Gmail API + HTML templates and python.',
+    category: 'academic',
+    subcategory: 'Automation',
+    thumbnailUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC0D7iVmQo-yd7zAh9Je4ftx_nPmPijOu_C_HUI6AyAoJW2GrL4NEntfgcvDk8UaLSwN4ieq9d0QeR2sh80V2WwnCGruTC1y3Fja_jt5S17_rhQeXGcLeZswAf6YaSyE1pa-ZfLgqXmsEroXuGbJ44lHlxmd1eDzlwcj3O7CpKnV3B8Qy5Q4HByFibJ3NG1GSMzecpOUtvXO0sph-bJSdpDAZ4xuqHjZwP88q5EvHnAhX2zgYIjPti838c15UxknXUVvWWs4Kj5EFRZ',
+    liveUrl: 'https://github.com/SoraPewnaldo/Gmail-Campaigner',
+    mediaUrls: [],
+    featured: true,
+    order: 4
+  },
+  {
     _id: '4',
     title: 'Event Branding',
     slug: 'event-branding',
