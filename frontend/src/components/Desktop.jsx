@@ -10,7 +10,7 @@ import jobApplicationGif from '../assets/job-application.gif';
 import DigitalFootprint from './DigitalFootprint';
 
 export default function Desktop() {
-  const resumeUrl = "/Ayush Dakwal Resume.pdf";
+  const resumeUrl = "/Ayush Dakwal CV.pdf";
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -119,8 +119,8 @@ export default function Desktop() {
           className="flex flex-col items-center gap-2 mb-10 active:scale-95 transition-transform touch-manipulation"
           style={{ minHeight: 44 }}
         >
-          <img src={jobApplicationGif} alt="Resume/Job Application" className="w-16 h-16 object-contain drop-shadow-md" />
-          <span className="font-label-caps text-label-caps text-on-surface text-center text-xs">resume.pdf</span>
+          <img src={jobApplicationGif} alt="CV/Job Application" className="w-16 h-16 object-contain drop-shadow-md" />
+          <span className="font-label-caps text-label-caps text-on-surface text-center text-xs">cv.pdf</span>
         </a>
 
         {/* Digital Footprint Card – in flow on mobile */}
@@ -221,8 +221,8 @@ export default function Desktop() {
         />
  
         <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="scattered-item cursor-pointer flex flex-col items-center select-none z-10" style={{ top: '48%', left: '80%', transform: 'rotate(-5deg)' }}>
-          <img src={jobApplicationGif} alt="Resume/Job Application" className="w-20 h-20 object-contain drop-shadow-md transition-transform hover:scale-110" />
-          <span className="font-label-caps text-label-caps text-on-surface mt-2 text-center w-24">resume.pdf</span>
+          <img src={jobApplicationGif} alt="CV/Job Application" className="w-20 h-20 object-contain drop-shadow-md transition-transform hover:scale-110" />
+          <span className="font-label-caps text-label-caps text-on-surface mt-2 text-center w-24">cv.pdf</span>
         </a>
 
         {/* Scattered Decorative GIFs */}

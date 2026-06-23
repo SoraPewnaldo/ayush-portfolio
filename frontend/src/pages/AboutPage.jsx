@@ -119,7 +119,6 @@ export default function AboutPage() {
               <li><strong className="font-bold">Name:</strong> Ayush Dakwal</li>
               <li><strong className="font-bold">Degree:</strong> B.Tech CSE (Cybersecurity)</li>
               <li><strong className="font-bold">University:</strong> NIIT University (2023-2027)</li>
-              <li><strong className="font-bold">CGPA:</strong> 6.98</li>
               <li><strong className="font-bold">Current Focus:</strong> Cybersecurity</li>
             </ul>
           </div>

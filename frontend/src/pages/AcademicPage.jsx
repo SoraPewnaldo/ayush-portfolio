@@ -515,7 +515,6 @@ export default function AcademicPage() {
               <div>
                 <div className="font-body-md font-bold text-primary">NIIT University</div>
                 <div className="font-caption text-secondary">B.Tech CSE (Cybersecurity) • 2023 - 2027</div>
-                <div className="font-caption text-secondary">CGPA: 6.98</div>
               </div>
             </div>
             
