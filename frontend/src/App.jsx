@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Desktop from './components/Desktop';
 import FolderPage from './pages/FolderPage';
 import AboutPage from './pages/AboutPage';
@@ -100,6 +101,7 @@ function App() {
           <Route path="/folder/:category" element={<FolderPage />} />
         </Routes>
       </main>
+      <Analytics />
     </Router>
   );
 }
