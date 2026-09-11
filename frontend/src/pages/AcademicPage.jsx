@@ -62,11 +62,70 @@ export default function AcademicPage() {
         {/* Main Content Pane (Report Style) */}
         <div className="md:col-span-8 space-y-8">
           
+          {/* Internship Experience */}
+          <section className="bg-white-paper p-10 border-t-[12px] border-primary-container relative overflow-hidden shadow-sm">
+            <h2 className="font-headline-lg text-5xl font-bold text-primary mb-8 flex items-center gap-4">
+              <span className="material-symbols-outlined text-[40px]">work</span> Internship Experience
+            </h2>
+            
+            <div className="space-y-8">
+              {/* Internship 1 */}
+              <div className="group border-l-2 border-accent-sand/40 pl-5 space-y-3">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 className="font-bold text-lg text-primary">Cyber Security Intern</h3>
+                  <span className="font-label-caps text-secondary text-sm">Jul 2026</span>
+                </div>
+                <div className="font-body-md font-semibold text-secondary">1Stop.ai</div>
+                <p className="font-body-md text-on-surface-variant/90 leading-relaxed">
+                  Completed three major capstone projects covering diverse areas of cybersecurity:
+                </p>
+                <ul className="list-disc pl-5 space-y-1 font-body-sm text-on-surface-variant/80">
+                  <li><strong className="text-on-surface">Phishing Awareness Simulation:</strong> Developed a platform in Laravel simulating phishing pages to capture and log credentials safely while redirecting users to the original site.</li>
+                  <li><strong className="text-on-surface">Android Application Pentesting:</strong> Set up a mobile pentesting lab (Genymotion, Kali Linux, Burp Suite, Frida) and tested vulnerable apps against OWASP Top 5 Android vulnerabilities.</li>
+                  <li><strong className="text-on-surface">Digital Forensic Analysis:</strong> Configured Autopsy on Kali Linux to analyze forensic disk images, extract artifacts (browser history, registry hives), and solved TryHackMe DFIR CTFs.</li>
+                </ul>
+                <div className="flex gap-3 pt-2">
+                  <a href="/certificates/1stop cybersec internship.pdf" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-folder-cyan hover:underline font-label-caps font-semibold">
+                    <span className="material-symbols-outlined text-xs">workspace_premium</span> Internship Certificate
+                  </a>
+                  <a href="/certificates/1stop cybersec project completion.pdf" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-folder-cyan hover:underline font-label-caps font-semibold">
+                    <span className="material-symbols-outlined text-xs">verified</span> Project Completion
+                  </a>
+                </div>
+              </div>
+
+              {/* Internship 2 */}
+              <div className="group border-l-2 border-accent-sand/40 pl-5 space-y-3">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 className="font-bold text-lg text-primary">Web Development Front-End Intern</h3>
+                  <span className="font-label-caps text-secondary text-sm">Jul 2026</span>
+                </div>
+                <div className="font-body-md font-semibold text-secondary">1Stop.ai</div>
+                <p className="font-body-md text-on-surface-variant/90 leading-relaxed">
+                  Built front-end projects focusing on HTML, CSS, and Bootstrap:
+                </p>
+                <ul className="list-disc pl-5 space-y-1 font-body-sm text-on-surface-variant/80">
+                  <li><strong className="text-on-surface">Single Page Website:</strong> Created a modern single-page portfolio layout.</li>
+                  <li><strong className="text-on-surface">Bootstrap & HTML Calculator:</strong> Developed an interactive UI calculator with responsive design.</li>
+                  <li><strong className="text-on-surface">HTML To Do List:</strong> Built a task tracking application focusing on DOM manipulation.</li>
+                </ul>
+                <div className="flex gap-3 pt-2">
+                  <a href="/certificates/1stop web dev internship.pdf" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-folder-cyan hover:underline font-label-caps font-semibold">
+                    <span className="material-symbols-outlined text-xs">workspace_premium</span> Internship Certificate
+                  </a>
+                  <a href="/certificates/1stop web dev project completion..pdf" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-folder-cyan hover:underline font-label-caps font-semibold">
+                    <span className="material-symbols-outlined text-xs">verified</span> Project Completion
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Key Engineering Projects */}
           <section className="bg-white-paper p-10 border-t-[12px] border-primary-container relative overflow-hidden shadow-sm">
             <div className="absolute top-4 right-6 font-label-caps text-outline-variant select-none hidden sm:block">PROJECT ARCHIVES</div>
-            <h2 className="font-headline-md text-primary mb-8 flex items-center gap-2">
-              <span className="material-symbols-outlined">terminal</span> Key Engineering Projects
+            <h2 className="font-headline-lg text-5xl font-bold text-primary mb-8 flex items-center gap-4">
+              <span className="material-symbols-outlined text-[40px]">terminal</span> Key Engineering Projects
             </h2>
             
             <div className="space-y-8">
@@ -391,10 +450,58 @@ export default function AcademicPage() {
             </div>
           </section>
 
+          {/* Licenses & Certifications */}
+          <section className="bg-white-paper p-10 border-t-[12px] border-primary-container relative overflow-hidden shadow-sm">
+            <h2 className="font-headline-lg text-5xl font-bold text-primary mb-6 flex items-center gap-4">
+              <span className="material-symbols-outlined text-[40px]">workspace_premium</span> Licenses &amp; Certifications
+            </h2>
+            <div className="space-y-6">
+              {/* Cisco Certificates */}
+              <div className="flex flex-col sm:flex-row gap-4 items-start p-6 bg-surface-container-low border border-outline-variant/30 rounded-lg">
+                <div className="flex-shrink-0 w-16 h-16 bg-white flex flex-col items-center justify-center rounded-lg border border-primary-container/10 shadow-sm p-2">
+                  <img alt="Cisco" className="w-full h-full object-contain" src={ciscoLogo} />
+                </div>
+                <div className="flex-grow space-y-4">
+                  <div>
+                    <h4 className="font-bold text-primary text-lg">Cisco Networking Academy Certifications</h4>
+                    <p className="font-body-sm text-secondary">Issued Jun 2026</p>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <a href="/certificates/Junior_Cybersecurity_Analyst_Career_Path_certificate_ayush-dakwal23-st-niituniversity-in_6bffcbae-ef3e-4158-b8e3-609b4eba7b58.pdf" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-folder-cyan hover:underline">
+                      <span className="material-symbols-outlined text-[16px]">open_in_new</span> Junior Cybersecurity Analyst Career Path
+                    </a>
+                    <a href="/certificates/Exploring_Networking_with_Cisco_Packet_Tracer_certificate_ayush-dakwal23-st-niituniversity-in_cae8e995-3d28-4a2d-aee0-11c7aba7fb75.pdf" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-folder-cyan hover:underline">
+                      <span className="material-symbols-outlined text-[16px]">open_in_new</span> Exploring Networking with Cisco Packet Tracer
+                    </a>
+                    <a href="/certificates/Getting_Started_with_Cisco_Packet_Tracer_certificate_ayush-dakwal23-st-niituniversity-in_53447d48-5789-4ae8-aacc-d94f863111a2.pdf" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-folder-cyan hover:underline">
+                      <span className="material-symbols-outlined text-[16px]">open_in_new</span> Getting Started with Cisco Packet Tracer
+                    </a>
+                  </div>
+
+                  <div>
+                    <h5 className="font-label-caps text-[10px] text-secondary mb-1.5 mt-2">VERIFIED SKILLS</h5>
+                    <div className="flex flex-wrap gap-1.5">
+                      {[
+                        'Access Controls', 'Antimalware Protection', 'Application Security', 
+                        'Cloud Security', 'Common Cyber Threats', 'Defending Systems And Devices', 
+                        'Defense-in-Depth', 'Firewalls'
+                      ].map(s => (
+                        <span key={s} className="px-2 py-0.5 bg-white border border-outline-variant/40 rounded text-[11px] font-caption text-secondary">
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Relevant Coursework Modules */}
           <section className="bg-white-paper p-10 border-t-[12px] border-primary-container relative overflow-hidden shadow-sm">
-            <h2 className="font-headline-md text-primary mb-6 flex items-center gap-2">
-              <span className="material-symbols-outlined">menu_book</span> Relevant Modules
+            <h2 className="font-headline-lg text-5xl font-bold text-primary mb-6 flex items-center gap-4">
+              <span className="material-symbols-outlined text-[40px]">menu_book</span> Relevant Modules
             </h2>
             <p className="font-body-md text-on-surface-variant/80 mb-6">
               Core academic modules completed during B.Tech studies in Computer Science and Cybersecurity:
@@ -416,8 +523,8 @@ export default function AcademicPage() {
 
           {/* Honors & Achievements */}
           <section className="bg-white-paper p-10 border-t-[12px] border-primary-container relative overflow-hidden shadow-sm">
-            <h2 className="font-headline-md text-primary mb-6 flex items-center gap-2">
-              <span className="material-symbols-outlined">emoji_events</span> Achievements &amp; Accolades
+            <h2 className="font-headline-lg text-5xl font-bold text-primary mb-6 flex items-center gap-4">
+              <span className="material-symbols-outlined text-[40px]">emoji_events</span> Achievements &amp; Accolades
             </h2>
             <div className="space-y-4">
               {[
@@ -434,41 +541,6 @@ export default function AcademicPage() {
                   </div>
                 </div>
               ))}
-            </div>
-          </section>
-
-          {/* Licenses & Certifications */}
-          <section className="bg-white-paper p-10 border-t-[12px] border-primary-container relative overflow-hidden shadow-sm">
-            <h2 className="font-headline-md text-primary mb-6 flex items-center gap-2">
-              <span className="material-symbols-outlined">workspace_premium</span> Licenses &amp; Certifications
-            </h2>
-            <div className="space-y-4">
-              <div className="flex flex-col sm:flex-row gap-4 items-start p-6 bg-surface-container-low border border-outline-variant/30 rounded-lg">
-                <div className="flex-shrink-0 w-16 h-16 bg-white flex flex-col items-center justify-center rounded-lg border border-primary-container/10 shadow-sm p-2">
-                  <img alt="Cisco" className="w-full h-full object-contain" src={ciscoLogo} />
-                </div>
-                <div className="flex-grow space-y-3">
-                  <div>
-                    <h4 className="font-bold text-primary text-lg">Junior Cybersecurity Analyst Career Path</h4>
-                    <p className="font-body-sm text-secondary">Cisco Networking Academy • Issued Jun 2026</p>
-                  </div>
-                  
-                  <div>
-                    <h5 className="font-label-caps text-[10px] text-secondary mb-1.5">VERIFIED SKILLS</h5>
-                    <div className="flex flex-wrap gap-1.5">
-                      {[
-                        'Access Controls', 'Antimalware Protection', 'Application Security', 
-                        'Cloud Security', 'Common Cyber Threats', 'Defending Systems And Devices', 
-                        'Defense-in-Depth', 'Firewalls'
-                      ].map(s => (
-                        <span key={s} className="px-2 py-0.5 bg-white border border-outline-variant/40 rounded text-[11px] font-caption text-secondary">
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </section>
 
