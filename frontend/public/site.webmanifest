@@ -1,0 +1,21 @@
+{
+  "name": "Ayush Dakwal Portfolio",
+  "short_name": "Ayush Dakwal",
+  "description": "Cybersecurity & AI Researcher specializing in digital forensics, secure AI systems, and zero-trust architectures.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF7F2",
+  "theme_color": "#2C3E50",
+  "icons": [
+    {
+      "src": "/icon.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

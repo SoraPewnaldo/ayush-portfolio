@@ -8,7 +8,10 @@ export default function FolderPage() {
   const [content, setContent] = useState(null);
   const [projects, setProjects] = useState([]);
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
+    setLoading(true);
     let catQuery = category;
     if (category === 'ai-research' || category === 'cybersecurity') catQuery = 'cybersecurity';
     if (category === 'video') catQuery = 'video';
@@ -25,6 +28,7 @@ export default function FolderPage() {
 
     const matchedProjects = projectsData.filter(p => p.category === catQuery).sort((a, b) => a.order - b.order);
     setProjects(matchedProjects);
+    setLoading(false);
   }, [category]);
 
   return (
@@ -40,45 +44,74 @@ export default function FolderPage() {
           <Link to="/" className="text-on-surface-variant hover:text-primary transition-colors"><span className="material-symbols-outlined text-4xl">close</span></Link>
         </div>
 
-        <div className="prose prose-stone max-w-none font-body-md text-on-surface">
-          {content && content.content && (() => {
-            try {
-              const parsed = JSON.parse(content.content);
-              return parsed.sections.map((sec, idx) => (
-                <div key={idx} className="mb-8">
-                  <h2 className="font-headline-md text-headline-md text-primary mb-2">{sec.heading}</h2>
-                  <p className="text-on-surface-variant leading-relaxed whitespace-pre-wrap">{sec.text}</p>
-                </div>
-              ));
-            } catch(e) {
-              return <p>{content.content}</p>;
-            }
-          })()}
-        </div>
-
-        {projects.length > 0 && (
-          <div className="mt-12">
-            <h2 className="font-headline-lg text-headline-lg text-primary mb-6">Projects & Media</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {projects.map(proj => (
-                <div key={proj._id} className="bg-surface rounded-lg overflow-hidden border border-outline-variant shadow-sm hover:shadow-md transition-all group">
-                  {proj.thumbnailUrl && <img src={proj.thumbnailUrl} alt={proj.title} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />}
-                  <div className="p-6 relative bg-surface z-10">
-                    <h3 className="font-headline-md text-2xl text-primary">{proj.title}</h3>
-                    <p className="font-body-md text-on-surface-variant mt-2">{proj.description}</p>
-                    {proj.technologies && proj.technologies.length > 0 && (
-                      <div className="flex gap-2 mt-4 flex-wrap">
-                        {proj.technologies.map(tech => (
-                          <span key={tech} className="bg-surface-variant px-2 py-1 text-label-caps font-label-caps rounded text-on-surface-variant">{tech}</span>
-                        ))}
-                      </div>
-                    )}
-                    {proj.liveUrl && <a href={proj.liveUrl} target="_blank" rel="noreferrer" className="text-primary underline mt-4 inline-block font-label-caps">View Live →</a>}
-                  </div>
-                </div>
-              ))}
+        {loading ? (
+          /* Loading Skeleton */
+          <div className="space-y-6 animate-pulse">
+            <div className="h-6 bg-surface-variant/50 rounded w-1/3"></div>
+            <div className="h-4 bg-surface-variant/30 rounded w-full"></div>
+            <div className="h-4 bg-surface-variant/30 rounded w-5/6"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+              <div className="h-64 bg-surface-variant/40 rounded-lg"></div>
+              <div className="h-64 bg-surface-variant/40 rounded-lg"></div>
             </div>
           </div>
+        ) : (
+          <>
+            <div className="prose prose-stone max-w-none font-body-md text-on-surface">
+              {content && content.content && (() => {
+                try {
+                  const parsed = JSON.parse(content.content);
+                  return parsed.sections.map((sec, idx) => (
+                    <div key={idx} className="mb-8">
+                      <h2 className="font-headline-md text-headline-md text-primary mb-2">{sec.heading}</h2>
+                      <p className="text-on-surface-variant leading-relaxed whitespace-pre-wrap">{sec.text}</p>
+                    </div>
+                  ));
+                } catch(e) {
+                  return <p>{content.content}</p>;
+                }
+              })()}
+            </div>
+
+            {projects.length > 0 && (
+              <div className="mt-12">
+                <h2 className="font-headline-lg text-headline-lg text-primary mb-6">Projects & Media</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {projects.map(proj => (
+                    <div key={proj._id} className="bg-surface rounded-lg overflow-hidden border border-outline-variant shadow-sm hover:shadow-md transition-all group">
+                      {proj.thumbnailUrl && <img loading="lazy" decoding="async" src={proj.thumbnailUrl} alt={proj.title} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />}
+                      <div className="p-6 relative bg-surface z-10">
+                        <h3 className="font-headline-md text-2xl text-primary">{proj.title}</h3>
+                        <p className="font-body-md text-on-surface-variant mt-2">{proj.description}</p>
+                        {proj.technologies && proj.technologies.length > 0 && (
+                          <div className="flex gap-2 mt-4 flex-wrap">
+                            {proj.technologies.map(tech => (
+                              <span key={tech} className="bg-surface-variant px-2 py-1 text-label-caps font-label-caps rounded text-on-surface-variant">{tech}</span>
+                            ))}
+                          </div>
+                        )}
+                        {proj.liveUrl && <a href={proj.liveUrl} target="_blank" rel="noreferrer" className="text-primary underline mt-4 inline-block font-label-caps">View Live →</a>}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Empty State */}
+            {!content && projects.length === 0 && (
+              <div className="text-center py-16 px-4">
+                <span className="material-symbols-outlined text-6xl text-secondary/40 mb-4 block">folder_open</span>
+                <h3 className="font-headline-md text-xl text-primary font-bold mb-2">Folder Is Empty</h3>
+                <p className="font-body-md text-secondary max-w-md mx-auto mb-6">
+                  No public files or archived project logs are currently stored in this directory.
+                </p>
+                <Link to="/" className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-full font-body-md hover:bg-primary-container transition-all">
+                  <span className="material-symbols-outlined text-[18px]">arrow_back</span> Return to Desktop
+                </Link>
+              </div>
+            )}
+          </>
         )}
       </motion.div>
     </div>

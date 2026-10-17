@@ -1,22 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import shinchan from '../assets/shinchan.gif';
-import Ayush from '../assets/Ayush.jpg';
-import rangmanch from '../assets/rangmanch.jpeg';
+import Ayush from '../assets/Ayush.webp';
+import rangmanch from '../assets/rangmanch.webp';
 
 export default function AboutPage() {
   return (
     <div className="text-primary font-body-md min-h-screen relative pb-16 pt-16 md:pb-32 md:pt-32 px-4 md:px-workspace-margin max-w-7xl mx-auto z-10 overflow-x-hidden">
-      <Link to="/" className="relative md:absolute md:top-8 md:right-8 inline-flex mb-6 md:mb-0 items-center gap-2 px-4 py-2 border border-primary-container rounded-full text-primary-container font-body-md hover:bg-primary-container hover:text-white transition-all duration-300 active:scale-95 bg-surface/50 backdrop-blur-md z-50" style={{ minHeight: 44 }}>
-        <span className="material-symbols-outlined text-[18px]">arrow_back</span>
-        Back to Desktop
-      </Link>
-      
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 font-mono text-xs text-secondary">
+          <Link to="/" className="hover:text-primary transition-colors flex items-center gap-1 font-semibold">
+            <span className="material-symbols-outlined text-[16px]">desktop_windows</span> Desktop
+          </Link>
+          <span>/</span>
+          <span className="text-primary font-bold">About Me</span>
+        </nav>
+        <Link to="/" className="inline-flex items-center gap-2 px-4 py-2 border border-primary-container rounded-full text-primary-container font-body-md hover:bg-primary-container hover:text-white transition-all duration-300 active:scale-95 bg-surface/50 backdrop-blur-md" style={{ minHeight: 44 }}>
+          <span className="material-symbols-outlined text-[18px]">arrow_back</span>
+          Back to Desktop
+        </Link>
+      </div>
+
       {/* Header */}
       <header className="mb-12 md:mb-24 relative z-10">
         <div className="flex items-end gap-4 mb-4">
           <h1 className="text-4xl sm:text-5xl md:text-[135px] font-display-xl font-bold text-primary leading-none">About Me</h1>
-          <img alt="Shinchan" className="w-12 h-12 md:w-16 md:h-16 mb-2 md:mb-4 hover:scale-110 transition-transform duration-300" src={shinchan}/>
+          <img loading="lazy" decoding="async" alt="Shinchan" className="w-12 h-12 md:w-16 md:h-16 mb-2 md:mb-4 hover:scale-110 transition-transform duration-300" src={shinchan}/>
         </div>
         <p className="font-body-lg text-secondary max-w-2xl mt-4">A B.Tech Computer Science student specializing in Cybersecurity, bridging the gap between digital defense, intelligent algorithms, and creative expression.</p>
       </header>
@@ -147,6 +156,22 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+
+      {/* Related Pages Internal Linking */}
+      <nav aria-label="Related Sections" className="mt-12 bg-white-paper p-6 rounded-xl border border-outline-variant shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10">
+        <span className="font-label-caps text-secondary text-xs uppercase tracking-wider">Explore Related Folders:</span>
+        <div className="flex flex-wrap gap-3">
+          <Link to="/folder/academic" className="inline-flex items-center gap-1.5 px-4 py-2 bg-surface-container hover:bg-primary hover:text-white rounded-full text-xs font-semibold text-primary transition-all">
+            <span className="material-symbols-outlined text-[16px]">school</span> Academic &amp; Research
+          </Link>
+          <Link to="/folder/freelance" className="inline-flex items-center gap-1.5 px-4 py-2 bg-surface-container hover:bg-primary hover:text-white rounded-full text-xs font-semibold text-primary transition-all">
+            <span className="material-symbols-outlined text-[16px]">palette</span> Design Studio
+          </Link>
+          <Link to="/folder/extracurricular" className="inline-flex items-center gap-1.5 px-4 py-2 bg-surface-container hover:bg-primary hover:text-white rounded-full text-xs font-semibold text-primary transition-all">
+            <span className="material-symbols-outlined text-[16px]">theater_comedy</span> Beyond Screen
+          </Link>
+        </div>
+      </nav>
     </div>
   );
 }

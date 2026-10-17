@@ -1,5 +1,5 @@
-import { useMemo } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useMemo, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import Desktop from './components/Desktop';
 import FolderPage from './pages/FolderPage';
@@ -7,7 +7,45 @@ import AboutPage from './pages/AboutPage';
 import AcademicPage from './pages/AcademicPage';
 import FreelancePage from './pages/FreelancePage';
 import ExtracurricularPage from './pages/ExtracurricularPage';
+import NotFoundPage from './pages/NotFoundPage';
 import Antigravity from './components/Antigravity';
+import { ToastProvider } from './components/Toast';
+
+function PageMetadata() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const titles = {
+      '/': 'Ayush Dakwal | Cybersecurity & AI Researcher',
+      '/folder/about': 'About Me | Ayush Dakwal',
+      '/folder/academic': 'Academic & Research | Ayush Dakwal',
+      '/folder/freelance': 'Digital Design Studio | Ayush Dakwal',
+      '/folder/extracurricular': 'Beyond the Screen | Ayush Dakwal'
+    };
+
+    const descriptions = {
+      '/': 'Portfolio of Ayush Dakwal, a Cybersecurity & AI Researcher specializing in digital forensics, secure AI systems, and zero-trust architectures.',
+      '/folder/about': 'Background, vitals, core philosophy, and technical toolkit of Ayush Dakwal.',
+      '/folder/academic': 'Academic coursework, AI & digital forensics research, Cisco internships, and cybersecurity engineering projects by Ayush Dakwal.',
+      '/folder/freelance': 'Digital design, brand identities, and multimedia creative work by Ayush Dakwal.',
+      '/folder/extracurricular': 'Theatre, dramatics, leadership as Secretary of Rangmanch NU, and cultural accomplishments.'
+    };
+
+    const path = location.pathname;
+    const title = titles[path] || (path.startsWith('/folder/') ? `${path.replace('/folder/', '').replace('-', ' ').toUpperCase()} | Ayush Dakwal` : '404 Not Found | Ayush Dakwal');
+    const desc = descriptions[path] || 'Portfolio and cybersecurity engineering archive of Ayush Dakwal.';
+
+    document.title = title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', desc);
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', title);
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', desc);
+  }, [location]);
+
+  return null;
+}
 
 function App() {
   const backgroundStars = useMemo(() => {
@@ -46,7 +84,9 @@ function App() {
 
   return (
     <Router>
-      <div className="fixed inset-0 pointer-events-none opacity-50 hidden md:block" style={{ zIndex: -2 }}>
+      <ToastProvider>
+        <PageMetadata />
+        <div className="fixed inset-0 pointer-events-none opacity-50 hidden md:block" style={{ zIndex: -2 }}>
         <Antigravity />
       </div>
 
@@ -99,10 +139,12 @@ function App() {
           <Route path="/folder/freelance" element={<FreelancePage />} />
           <Route path="/folder/extracurricular" element={<ExtracurricularPage />} />
           <Route path="/folder/:category" element={<FolderPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Analytics />
-    </Router>
+    </ToastProvider>
+  </Router>
   );
 }
 

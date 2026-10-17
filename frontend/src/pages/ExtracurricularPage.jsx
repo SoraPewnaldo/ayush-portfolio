@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import rangmanch from '../assets/rangmanch.jpeg';
-import dance1 from '../assets/dance1.jpg';
-import dance2 from '../assets/dance2.jpg';
-import theatrePresence from '../assets/theatre_presence.jpg';
-import stagePresence from '../assets/stage_presence.jpg';
-import winners from '../assets/winners.jpg';
-import publicSpeaking from '../assets/public_speaking.jpg';
-import bharatMandapam from '../assets/bharat_mandapam.jpg';
+import rangmanch from '../assets/rangmanch.webp';
+import dance1 from '../assets/dance1.webp';
+import dance2 from '../assets/dance2.webp';
+import theatrePresence from '../assets/theatre_presence.webp';
+import stagePresence from '../assets/stage_presence.webp';
+import winners from '../assets/winners.webp';
+import publicSpeaking from '../assets/public_speaking.webp';
+import bharatMandapam from '../assets/bharat_mandapam.webp';
 
 export default function ExtracurricularPage() {
   return (

@@ -8,6 +8,7 @@ import sillyGif from '../assets/silly.gif';
 
 import jobApplicationGif from '../assets/job-application.gif';
 import DigitalFootprint from './DigitalFootprint';
+import { trackEvent } from '../utils/analytics';
 
 export default function Desktop() {
   const resumeUrl = "/Ayush Dakwal Resume.pdf";
@@ -116,10 +117,11 @@ export default function Desktop() {
           href={resumeUrl}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackEvent('resume_download', { location: 'mobile_desktop' })}
           className="flex flex-col items-center gap-2 mb-10 active:scale-95 transition-transform touch-manipulation"
           style={{ minHeight: 44 }}
         >
-          <img src={jobApplicationGif} alt="Resume/Job Application" className="w-16 h-16 object-contain drop-shadow-md" />
+          <img loading="lazy" decoding="async" src={jobApplicationGif} alt="Resume/Job Application" className="w-16 h-16 object-contain drop-shadow-md" />
           <span className="font-label-caps text-label-caps text-on-surface text-center text-xs">resume.pdf</span>
         </a>
 
@@ -145,13 +147,13 @@ export default function Desktop() {
                 <path d="M 45 75 L 30 90 L 45 105" stroke="currentColor" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round" className="text-accent-sand"/>
              </svg>
            </div>
-           <img src={hiGif} alt="Hi gif" className="w-28 h-28 object-contain mt-8 mr-12 animate-[float_4s_ease-in-out_infinite] drop-shadow-lg" />
+           <img loading="lazy" decoding="async" src={hiGif} alt="Hi gif" className="w-28 h-28 object-contain mt-8 mr-12 animate-[float_4s_ease-in-out_infinite] drop-shadow-lg" />
          </div>
 
         <h1 className={`font-display-xl text-primary flex flex-col items-center relative z-20 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-default drop-shadow-sm hover:drop-shadow-xl text-display-xl`}>
           <div className="flex items-center gap-4" style={{ marginBottom: '-10px' }}>
             <span className="italic text-on-surface-variant opacity-80 transition-colors hover:text-primary" style={{ fontSize: '0.6em', lineHeight: '0.8' }}>ayush</span>
-            <img src={sillyGif} alt="Silly gif" className="w-16 h-16 object-contain animate-[float_3s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-12" />
+            <img loading="lazy" decoding="async" src={sillyGif} alt="Silly gif" className="w-16 h-16 object-contain animate-[float_3s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-12" />
           </div>
           <span className="font-bold tracking-tighter transition-colors hover:text-on-surface-variant" style={{ fontSize: '1.5em', lineHeight: '0.8' }}>portfolio</span>
         </h1>
@@ -220,15 +222,15 @@ export default function Desktop() {
           peekItems={['Leadership', 'Sports', 'Clubs']}
         />
  
-        <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="scattered-item cursor-pointer flex flex-col items-center select-none z-10" style={{ top: '48%', left: '80%', transform: 'rotate(-5deg)' }}>
-          <img src={jobApplicationGif} alt="Resume/Job Application" className="w-20 h-20 object-contain drop-shadow-md transition-transform hover:scale-110" />
+        <a href={resumeUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('resume_download', { location: 'desktop_scattered' })} className="scattered-item cursor-pointer flex flex-col items-center select-none z-10" style={{ top: '48%', left: '80%', transform: 'rotate(-5deg)' }}>
+          <img loading="lazy" decoding="async" src={jobApplicationGif} alt="Resume/Job Application" className="w-20 h-20 object-contain drop-shadow-md transition-transform hover:scale-110" />
           <span className="font-label-caps text-label-caps text-on-surface mt-2 text-center w-24">resume.pdf</span>
         </a>
 
         {/* Scattered Decorative GIFs */}
-        <img src={heckerGif} alt="Hecker gif" className="scattered-item w-24 h-24 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_6s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-6" style={{ top: '22%', left: '84%', transform: 'rotate(-12deg)' }} />
-        <img src={scubaGif} alt="Scuba gif" className="scattered-item w-28 h-28 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_7s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:-rotate-12" style={{ top: '82%', left: '60%', transform: 'rotate(5deg)' }} />
-        <img src={businessGif} alt="Business gif" className="scattered-item w-28 h-28 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_8s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-12" style={{ top: '45%', left: '8%', transform: 'rotate(-8deg)' }} />
+        <img loading="lazy" decoding="async" src={heckerGif} alt="Hecker gif" className="scattered-item w-24 h-24 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_6s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-6" style={{ top: '22%', left: '84%', transform: 'rotate(-12deg)' }} />
+        <img loading="lazy" decoding="async" src={scubaGif} alt="Scuba gif" className="scattered-item w-28 h-28 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_7s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:-rotate-12" style={{ top: '82%', left: '60%', transform: 'rotate(5deg)' }} />
+        <img loading="lazy" decoding="async" src={businessGif} alt="Business gif" className="scattered-item w-28 h-28 object-contain pointer-events-auto cursor-pointer drop-shadow-md animate-[float_8s_ease-in-out_infinite] transition-transform duration-300 hover:scale-125 hover:rotate-12" style={{ top: '45%', left: '8%', transform: 'rotate(-8deg)' }} />
         
         {/* Digital Footprint Card */}
         <div style={{ transform: 'none', transformOrigin: 'top left', position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>

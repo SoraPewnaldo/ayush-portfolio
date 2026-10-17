@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import academicBook from '../assets/academic_book.jpg';
-import ciscoLogo from '../assets/cisco.png';
-import forensicArchImg from '../assets/forensic_architecture.png';
-import forensicRocImg from '../assets/forensic_roc.png';
-import forensicConfImg from '../assets/forensic_confusion_matrix.png';
-import ztHeroImg from '../assets/zero_trust_hero.png';
-import ztVerificationImg from '../assets/zero_trust_verification.png';
+import academicBook from '../assets/academic_book.webp';
+import ciscoLogo from '../assets/cisco.webp';
+import forensicArchImg from '../assets/forensic_architecture.webp';
+import forensicRocImg from '../assets/forensic_roc.webp';
+import forensicConfImg from '../assets/forensic_confusion_matrix.webp';
+import ztHeroImg from '../assets/zero_trust_hero.webp';
+import ztVerificationImg from '../assets/zero_trust_verification.webp';
 
 export default function AcademicPage() {
   const [forensicTab, setForensicTab] = useState('arch'); // 'arch' | 'metrics' | 'demo'
@@ -23,10 +23,19 @@ export default function AcademicPage() {
 
   return (
     <div className="font-body-md text-on-surface min-h-screen overflow-x-hidden pt-16 md:pt-32 pb-20 px-4 md:px-workspace-margin max-w-7xl mx-auto relative z-10">
-      <Link to="/" className="relative md:absolute md:top-8 md:right-8 inline-flex mb-6 md:mb-0 items-center gap-2 px-4 py-2 border border-primary-container rounded-full text-primary-container font-body-md hover:bg-primary-container hover:text-white transition-all duration-300 active:scale-95 bg-surface/50 backdrop-blur-md z-50" style={{ minHeight: 44 }}>
-        <span className="material-symbols-outlined text-[18px]">arrow_back</span>
-        Back to Desktop
-      </Link>
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 font-mono text-xs text-secondary">
+          <Link to="/" className="hover:text-primary transition-colors flex items-center gap-1 font-semibold">
+            <span className="material-symbols-outlined text-[16px]">desktop_windows</span> Desktop
+          </Link>
+          <span>/</span>
+          <span className="text-primary font-bold">Academic &amp; Research</span>
+        </nav>
+        <Link to="/" className="inline-flex items-center gap-2 px-4 py-2 border border-primary-container rounded-full text-primary-container font-body-md hover:bg-primary-container hover:text-white transition-all duration-300 active:scale-95 bg-surface/50 backdrop-blur-md" style={{ minHeight: 44 }}>
+          <span className="material-symbols-outlined text-[18px]">arrow_back</span>
+          Back to Desktop
+        </Link>
+      </div>
 
       {/* Header Section */}
       <header className="mb-16 relative">
@@ -52,7 +61,7 @@ export default function AcademicPage() {
         
         {/* Decorative Academic Book Image */}
         <div className="absolute top-0 right-0 hidden lg:block animate-pulse duration-[4000ms]">
-          <img alt="Academic Book" className="w-32 h-32 object-cover rounded shadow-lg border border-outline-variant opacity-90 rotate-6" src={academicBook}/>
+          <img loading="lazy" decoding="async" alt="Academic Book" className="w-32 h-32 object-cover rounded shadow-lg border border-outline-variant opacity-90 rotate-6" src={academicBook}/>
           <div className="mt-2 text-center font-label-caps text-secondary uppercase tracking-widest">academic_book.jpg</div>
         </div>
       </header>
@@ -197,7 +206,7 @@ export default function AcademicPage() {
                         
                         {/* Real Diagram Image */}
                         <div className="border border-outline-variant/40 rounded-lg overflow-hidden bg-white p-2 cursor-zoom-in" onClick={() => setZoomImage(forensicArchImg)}>
-                          <img 
+                          <img loading="lazy" decoding="async" 
                             src={forensicArchImg} 
                             alt="Forensic AI Model Architecture (Click to expand)" 
                             className="w-full h-auto object-contain max-h-[320px] transition-transform hover:scale-[1.02]"
@@ -256,7 +265,7 @@ export default function AcademicPage() {
                           {/* Visual Curves */}
                           <div className="border border-outline-variant/40 rounded-lg overflow-hidden bg-white p-1.5 flex flex-col justify-center items-center cursor-zoom-in" onClick={() => setZoomImage(forensicRocImg)}>
                             <span className="text-[8px] font-bold text-secondary mb-1">Test ROC Curves (Click to expand)</span>
-                            <img 
+                            <img loading="lazy" decoding="async" 
                               src={forensicRocImg} 
                               alt="Forensic AI ROC Curves" 
                               className="w-full h-auto object-contain max-h-[200px] transition-transform hover:scale-[1.02]"
@@ -266,7 +275,7 @@ export default function AcademicPage() {
                         
                         <div className="border border-outline-variant/40 rounded-lg overflow-hidden bg-white p-2 flex flex-col justify-center items-center cursor-zoom-in" onClick={() => setZoomImage(forensicConfImg)}>
                           <span className="text-[8px] font-bold text-secondary mb-1">Confusion Matrix (Click to expand)</span>
-                          <img 
+                          <img loading="lazy" decoding="async" 
                             src={forensicConfImg} 
                             alt="Confusion Matrix" 
                             className="w-full h-auto object-contain max-h-[220px] transition-transform hover:scale-[1.02]"
@@ -325,7 +334,7 @@ export default function AcademicPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div className="border border-outline-variant/40 rounded-lg overflow-hidden bg-white p-1 cursor-zoom-in" onClick={() => setZoomImage(ztHeroImg)}>
                             <span className="text-[8px] font-bold text-secondary block text-center mb-1">Landing Dashboard (Click to expand)</span>
-                            <img 
+                            <img loading="lazy" decoding="async" 
                               src={ztHeroImg} 
                               alt="Zero Trust Hero Page" 
                               className="w-full h-auto object-contain max-h-[200px] transition-transform hover:scale-[1.02]"
@@ -334,7 +343,7 @@ export default function AcademicPage() {
 
                           <div className="border border-outline-variant/40 rounded-lg overflow-hidden bg-white p-1 cursor-zoom-in" onClick={() => setZoomImage(ztVerificationImg)}>
                             <span className="text-[8px] font-bold text-secondary block text-center mb-1">OSQuery Verification UI (Click to expand)</span>
-                            <img 
+                            <img loading="lazy" decoding="async" 
                               src={ztVerificationImg} 
                               alt="Zero Trust Verification UI" 
                               className="w-full h-auto object-contain max-h-[200px] transition-transform hover:scale-[1.02]"
@@ -496,7 +505,7 @@ export default function AcademicPage() {
               {/* Cisco Certificates */}
               <div className="flex flex-col sm:flex-row gap-4 items-start p-6 bg-surface-container-low border border-outline-variant/30 rounded-lg">
                 <div className="flex-shrink-0 w-16 h-16 bg-white flex flex-col items-center justify-center rounded-lg border border-primary-container/10 shadow-sm p-2">
-                  <img alt="Cisco" className="w-full h-full object-contain" src={ciscoLogo} />
+                  <img loading="lazy" decoding="async" alt="Cisco" className="w-full h-full object-contain" src={ciscoLogo} />
                 </div>
                 <div className="flex-grow space-y-4">
                   <div>
@@ -611,6 +620,22 @@ export default function AcademicPage() {
             </div>
           </div>
 
+          {/* Related Pages Internal Linking */}
+          <nav aria-label="Related Sections" className="bg-white-paper p-6 rounded-xl border border-outline-variant shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span className="font-label-caps text-secondary text-xs uppercase tracking-wider">Explore Related Folders:</span>
+            <div className="flex flex-wrap gap-3">
+              <Link to="/folder/about" className="inline-flex items-center gap-1.5 px-4 py-2 bg-surface-container hover:bg-primary hover:text-white rounded-full text-xs font-semibold text-primary transition-all">
+                <span className="material-symbols-outlined text-[16px]">person</span> About Me
+              </Link>
+              <Link to="/folder/freelance" className="inline-flex items-center gap-1.5 px-4 py-2 bg-surface-container hover:bg-primary hover:text-white rounded-full text-xs font-semibold text-primary transition-all">
+                <span className="material-symbols-outlined text-[16px]">palette</span> Design Studio
+              </Link>
+              <Link to="/folder/extracurricular" className="inline-flex items-center gap-1.5 px-4 py-2 bg-surface-container hover:bg-primary hover:text-white rounded-full text-xs font-semibold text-primary transition-all">
+                <span className="material-symbols-outlined text-[16px]">theater_comedy</span> Beyond Screen
+              </Link>
+            </div>
+          </nav>
+
         </div>
 
         {/* Sidebar / Technical Badges */}
@@ -703,7 +728,7 @@ export default function AcademicPage() {
           className="fixed inset-0 bg-black/80 backdrop-blur-md z-[999] flex items-center justify-center p-4 cursor-zoom-out"
           onClick={() => setZoomImage(null)}
         >
-          <img 
+          <img loading="lazy" decoding="async" 
             src={zoomImage} 
             alt="Zoomed view" 
             className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl border border-white/10 animate-fade-in" 
