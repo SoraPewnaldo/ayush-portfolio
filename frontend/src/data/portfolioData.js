@@ -90,6 +90,18 @@ export const projectsData = [
     order: 3
   },
   {
+    _id: '12',
+    title: 'Security Studio',
+    slug: 'security-studio',
+    description: 'Privacy-focused security workspace with 38 modules & 50+ workflows.',
+    category: 'academic',
+    subcategory: 'Security Tooling',
+    thumbnailUrl: 'https://lh3.googleusercontent.com/aida/AP1WRLsVHjv_pq9KPcACRJhZ2vT2aS5rxosuJ5koF37orSWoaOq5mvmj0AkmhOjQmQtNSAxNA8AoBFBt8CyCRWVdT-g_hX6xup6gZzwokqwqdFxpEC_vBE9ugkcoX4BxFWbLTcYZ6cS5qxKR1vOQ6sU8m2y9s-Xo79UXDLnhH4zG1EJYVgAQlOo1ohJopaiSYmKdoXzv6lVGX2mhuj2zqoXLcbTQKclOnKuWLSWMu_GugT3ZXfLHwEEvVYbk5WQK',
+    mediaUrls: [],
+    featured: true,
+    order: 4
+  },
+  {
     _id: '11',
     title: 'Gmail Campaigner',
     slug: 'gmail-campaigner',
@@ -100,7 +112,7 @@ export const projectsData = [
     liveUrl: 'https://github.com/SoraPewnaldo/Gmail-Campaigner',
     mediaUrls: [],
     featured: true,
-    order: 4
+    order: 5
   },
   {
     _id: '4',

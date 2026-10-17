@@ -35,7 +35,7 @@ export default function AcademicPage() {
             Academic <br/> &amp; Research.
           </h1>
           <p className="font-body-lg text-secondary leading-relaxed mb-8 border-l-4 border-accent-sand pl-6 italic">
-            "I am a Computer Science undergraduate specializing in Cybersecurity, developing secure systems and investigating how deep learning and forensic AI can enhance digital evidence integrity."
+            "Computer Science student specializing in Cybersecurity, with project experience in AI-based deepfake detection, Zero Trust access, security tooling, and hybrid cloud security architecture. Skilled in Python, deep learning, model evaluation, network security concepts, and web development."
           </p>
           <div className="flex flex-wrap gap-4 mb-8">
             <a href="mailto:ayush.dakwal23@st.niituniversity.in" className="inline-flex items-center gap-1.5 text-sm bg-white-paper/60 px-4 py-2 border border-outline-variant rounded-full text-secondary hover:text-primary hover:bg-white transition-all shadow-sm">
@@ -69,20 +69,42 @@ export default function AcademicPage() {
             </h2>
             
             <div className="space-y-8">
-              {/* Internship 1 */}
+              {/* Internship 1: Cisco */}
+              <div className="group border-l-2 border-accent-sand/40 pl-5 space-y-3">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 className="font-bold text-lg text-primary">Cybersecurity Virtual Intern</h3>
+                  <span className="font-label-caps text-secondary text-sm">Jun–Aug 2026</span>
+                </div>
+                <div className="font-body-md font-semibold text-secondary">Cisco Networking Academy</div>
+                <p className="font-body-md text-on-surface-variant/90 leading-relaxed">
+                  Engineered and evaluated secure enterprise and cloud architecture solutions:
+                </p>
+                <ul className="list-disc pl-5 space-y-1 font-body-sm text-on-surface-variant/80">
+                  <li>Developed a proposed secure hybrid data center network architecture connecting private data centers and public cloud services.</li>
+                  <li>Addressed IAM, cloud security groups, and VPC segmentation to reduce unauthorized access and limit lateral movement between applications.</li>
+                  <li>Evaluated security considerations for hybrid workloads, Kubernetes-orchestrated applications, microservices, and secure remote access.</li>
+                </ul>
+                <div className="flex gap-3 pt-2">
+                  <a href="/certificates/cisco_virtual_internship_program_2026.pdf" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-folder-cyan hover:underline font-label-caps font-semibold">
+                    <span className="material-symbols-outlined text-xs">workspace_premium</span> Internship Certificate
+                  </a>
+                </div>
+              </div>
+
+              {/* Internship 2: 1Stop Cybersec */}
               <div className="group border-l-2 border-accent-sand/40 pl-5 space-y-3">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <h3 className="font-bold text-lg text-primary">Cyber Security Intern</h3>
-                  <span className="font-label-caps text-secondary text-sm">Jul 2026</span>
+                  <span className="font-label-caps text-secondary text-sm">Jul–Aug 2026</span>
                 </div>
-                <div className="font-body-md font-semibold text-secondary">1Stop.ai</div>
+                <div className="font-body-md font-semibold text-secondary">1Stop.ai, Remote</div>
                 <p className="font-body-md text-on-surface-variant/90 leading-relaxed">
-                  Completed three major capstone projects covering diverse areas of cybersecurity:
+                  Completed 3 cybersecurity projects covering phishing simulation, Android penetration testing, and digital forensic analysis:
                 </p>
                 <ul className="list-disc pl-5 space-y-1 font-body-sm text-on-surface-variant/80">
                   <li><strong className="text-on-surface">Phishing Awareness Simulation:</strong> Developed a platform in Laravel simulating phishing pages to capture and log credentials safely while redirecting users to the original site.</li>
-                  <li><strong className="text-on-surface">Android Application Pentesting:</strong> Set up a mobile pentesting lab (Genymotion, Kali Linux, Burp Suite, Frida) and tested vulnerable apps against OWASP Top 5 Android vulnerabilities.</li>
-                  <li><strong className="text-on-surface">Digital Forensic Analysis:</strong> Configured Autopsy on Kali Linux to analyze forensic disk images, extract artifacts (browser history, registry hives), and solved TryHackMe DFIR CTFs.</li>
+                  <li><strong className="text-on-surface">Android Application Pentesting:</strong> Studied 5 OWASP Android vulnerability categories (M1–M5) in a mobile application security testing lab (Genymotion, Kali Linux, Burp Suite, Frida).</li>
+                  <li><strong className="text-on-surface">Digital Forensic Analysis:</strong> Used Autopsy on Kali Linux for forensic analysis of artifacts such as browser history, deleted files, registry data, and metadata.</li>
                 </ul>
                 <div className="flex gap-3 pt-2">
                   <a href="/certificates/1stop cybersec internship.pdf" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-folder-cyan hover:underline font-label-caps font-semibold">
@@ -94,20 +116,20 @@ export default function AcademicPage() {
                 </div>
               </div>
 
-              {/* Internship 2 */}
+              {/* Internship 3: 1Stop Web Dev */}
               <div className="group border-l-2 border-accent-sand/40 pl-5 space-y-3">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <h3 className="font-bold text-lg text-primary">Web Development Front-End Intern</h3>
-                  <span className="font-label-caps text-secondary text-sm">Jul 2026</span>
+                  <h3 className="font-bold text-lg text-primary">Front-End Web Development Intern</h3>
+                  <span className="font-label-caps text-secondary text-sm">Jul–Aug 2026</span>
                 </div>
-                <div className="font-body-md font-semibold text-secondary">1Stop.ai</div>
+                <div className="font-body-md font-semibold text-secondary">1Stop.ai, Remote</div>
                 <p className="font-body-md text-on-surface-variant/90 leading-relaxed">
-                  Built front-end projects focusing on HTML, CSS, and Bootstrap:
+                  Built 3 web development projects focusing on front-end user experience and responsive design:
                 </p>
                 <ul className="list-disc pl-5 space-y-1 font-body-sm text-on-surface-variant/80">
-                  <li><strong className="text-on-surface">Single Page Website:</strong> Created a modern single-page portfolio layout.</li>
-                  <li><strong className="text-on-surface">Bootstrap & HTML Calculator:</strong> Developed an interactive UI calculator with responsive design.</li>
-                  <li><strong className="text-on-surface">HTML To Do List:</strong> Built a task tracking application focusing on DOM manipulation.</li>
+                  <li><strong className="text-on-surface">Portfolio Website:</strong> Developed and tested modern single-page portfolio layout.</li>
+                  <li><strong className="text-on-surface">Bootstrap/HTML Calculator:</strong> Built an interactive UI calculator with responsive styling.</li>
+                  <li><strong className="text-on-surface">To-Do List:</strong> Developed a task tracking application implementing responsive DOM manipulation using HTML, CSS, Bootstrap, and JavaScript.</li>
                 </ul>
                 <div className="flex gap-3 pt-2">
                   <a href="/certificates/1stop web dev internship.pdf" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-folder-cyan hover:underline font-label-caps font-semibold">
@@ -132,7 +154,7 @@ export default function AcademicPage() {
               {/* Project 1 */}
               <div className="group border-l-2 border-accent-sand/40 pl-5 space-y-2">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <h3 className="font-bold text-lg text-primary">FORENSIC-AI: Intelligent Deepfake Video Detection</h3>
+                  <h3 className="font-bold text-lg text-primary">FORENSIC-AI: Intelligent Deepfake Video Detection for Digital Evidence</h3>
                   <div className="flex gap-3">
                     <a href="https://github.com/SoraPewnaldo/forensic-ai-deepfake-detection" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-folder-cyan hover:underline font-label-caps font-semibold">
                       <span className="material-symbols-outlined text-xs">code</span> Github
@@ -259,7 +281,7 @@ export default function AcademicPage() {
               {/* Project 2 */}
               <div className="group border-l-2 border-accent-sand/40 pl-5 space-y-2">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <h3 className="font-bold text-lg text-primary">Automated Trust Scoring Engine for Zero Trust Access</h3>
+                  <h3 className="font-bold text-lg text-primary">ZeroIAM: Automated Trust Scoring Engine for Zero Trust Access</h3>
                   <div className="flex gap-3">
                     <a href="https://github.com/SoraPewnaldo/Zero-trust" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-folder-cyan hover:underline font-label-caps font-semibold">
                       <span className="material-symbols-outlined text-xs">code</span> Github
@@ -416,6 +438,21 @@ export default function AcademicPage() {
               {/* Project 3 */}
               <div className="group border-l-2 border-accent-sand/40 pl-5 space-y-2">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 className="font-bold text-lg text-primary">Security Studio: Privacy-Focused Security Workspace</h3>
+                </div>
+                <p className="font-body-md text-on-surface-variant/90 leading-relaxed">
+                  Engineered a privacy-centric, self-hosted security operations and analysis platform designed to keep sensitive intelligence local.
+                </p>
+                <ul className="list-disc pl-5 space-y-1 font-body-sm text-on-surface-variant/80">
+                  <li>Built a centralized workspace integrating 38 specialized security modules.</li>
+                  <li>Supports 50+ security events/workflows for triage, vulnerability scanning, and risk assessment while keeping sensitive operations local.</li>
+                  <li>Features zero data leakage architecture with end-to-end privacy guarantees.</li>
+                </ul>
+              </div>
+
+              {/* Project 4 */}
+              <div className="group border-l-2 border-accent-sand/40 pl-5 space-y-2">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <h3 className="font-bold text-lg text-primary">Gmail Campaigner: Open-Source Email Outreach</h3>
                   <div className="flex gap-3">
                     <a href="https://github.com/SoraPewnaldo/Gmail-Campaigner" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-folder-cyan hover:underline font-label-caps font-semibold">
@@ -433,7 +470,7 @@ export default function AcademicPage() {
                 </ul>
               </div>
 
-              {/* Project 4 */}
+              {/* Project 5 */}
               <div className="group border-l-2 border-accent-sand/40 pl-5 space-y-2">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <h3 className="font-bold text-lg text-primary">Smart Fitness and Exercise Tracker</h3>
@@ -464,18 +501,18 @@ export default function AcademicPage() {
                 <div className="flex-grow space-y-4">
                   <div>
                     <h4 className="font-bold text-primary text-lg">Cisco Networking Academy Certifications</h4>
-                    <p className="font-body-sm text-secondary">Issued Jun 2026</p>
+                    <p className="font-body-sm text-secondary">Issued Jun–Aug 2026</p>
                   </div>
                   
-                  <div className="space-y-2">
-                    <a href="/certificates/Junior_Cybersecurity_Analyst_Career_Path_certificate_ayush-dakwal23-st-niituniversity-in_6bffcbae-ef3e-4158-b8e3-609b4eba7b58.pdf" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-folder-cyan hover:underline">
-                      <span className="material-symbols-outlined text-[16px]">open_in_new</span> Junior Cybersecurity Analyst Career Path
+                  <div className="space-y-2.5">
+                    <a href="/certificates/cisco_virtual_internship_program_2026.pdf" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-folder-cyan hover:underline">
+                      <span className="material-symbols-outlined text-[16px]">open_in_new</span> Cisco AICTE Virtual Internship Program 2026, Cybersecurity <span className="text-secondary text-xs">(Jun–Aug 2026)</span>
                     </a>
-                    <a href="/certificates/Exploring_Networking_with_Cisco_Packet_Tracer_certificate_ayush-dakwal23-st-niituniversity-in_cae8e995-3d28-4a2d-aee0-11c7aba7fb75.pdf" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-folder-cyan hover:underline">
-                      <span className="material-symbols-outlined text-[16px]">open_in_new</span> Exploring Networking with Cisco Packet Tracer
+                    <a href="/certificates/cisco_cybersecurity_essentials.pdf" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-folder-cyan hover:underline">
+                      <span className="material-symbols-outlined text-[16px]">open_in_new</span> Cybersecurity Essentials <span className="text-secondary text-xs">(Jun 2026)</span>
                     </a>
-                    <a href="/certificates/Getting_Started_with_Cisco_Packet_Tracer_certificate_ayush-dakwal23-st-niituniversity-in_53447d48-5789-4ae8-aacc-d94f863111a2.pdf" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-folder-cyan hover:underline">
-                      <span className="material-symbols-outlined text-[16px]">open_in_new</span> Getting Started with Cisco Packet Tracer
+                    <a href="/certificates/cisco_packet_tracer_networking.pdf" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-folder-cyan hover:underline">
+                      <span className="material-symbols-outlined text-[16px]">open_in_new</span> Exploring Networking with Cisco Packet Tracer <span className="text-secondary text-xs">(Jun 2026)</span>
                     </a>
                   </div>
 
@@ -612,27 +649,32 @@ export default function AcademicPage() {
             <h4 className="font-label-caps text-primary mb-4">Core Competencies</h4>
             <div className="flex flex-wrap gap-2">
               {[
+                { name: 'Python', level: 'Intermediate', isCore: true },
                 { name: 'Java', level: 'Intermediate', isCore: true },
                 { name: 'JavaScript', level: 'Intermediate', isCore: true },
-                { name: 'Python', level: 'Intermediate', isCore: true },
-                { name: 'HTML & CSS', level: 'Intermediate' },
-                { name: 'Next.js & React', level: 'Intermediate' },
-                { name: 'MySQL & MongoDB', level: 'Intermediate' },
-                { name: 'GitHub', level: 'Intermediate' },
-                { name: 'Arduino & Pi', level: 'Intermediate' },
-                { name: 'Jenkins', level: 'Intermediate' },
+                { name: 'TypeScript', level: 'Intermediate' },
+                { name: 'PyTorch', level: 'Intermediate', isCore: true },
+                { name: 'Machine Learning', level: 'Intermediate' },
                 { name: 'Deep Learning', level: 'Intermediate' },
                 { name: 'CNNs', level: 'Intermediate' },
-                { name: 'Vision Transformers', level: 'Intermediate' },
+                { name: 'Vision Transformers (ViT)', level: 'Intermediate' },
                 { name: 'Transfer Learning', level: 'Intermediate' },
-                { name: 'Model Evaluation', level: 'Intermediate' },
+                { name: 'Model Evaluation (AUC/HTER)', level: 'Intermediate' },
+                { name: 'Hybrid Cloud Security', level: 'Intermediate', isCore: true },
+                { name: 'IAM & Access Control', level: 'Intermediate' },
+                { name: 'Network Security & Segmentation', level: 'Intermediate' },
+                { name: 'AWS Security Groups & VPCs', level: 'Intermediate' },
+                { name: 'Kubernetes & Microservices Security', level: 'Intermediate' },
+                { name: 'Next.js & React', level: 'Intermediate' },
+                { name: 'Node.js & Express', level: 'Intermediate' },
+                { name: 'REST APIs', level: 'Intermediate' },
+                { name: 'MySQL & MongoDB', level: 'Intermediate' },
+                { name: 'PostgreSQL & SQLite', level: 'Intermediate' },
+                { name: 'Docker & Jenkins', level: 'Intermediate' },
+                { name: 'Prisma & GitHub Actions', level: 'Intermediate' },
                 { name: 'Linux', level: 'Intermediate' },
-                { name: 'Nmap', level: 'Intermediate' },
-                { name: 'Ethical Hacking', level: 'Intermediate' },
-                { name: 'Pentesting', level: 'Intermediate' },
-                { name: 'Vulnerability Assessment', level: 'Intermediate' },
-                { name: 'Network Security', level: 'Intermediate' },
-                { name: 'Cloud Security', level: 'Intermediate' }
+                { name: 'Autopsy & Digital Forensics', level: 'Intermediate' },
+                { name: 'Ethical Hacking & Pentesting', level: 'Intermediate' }
               ].map(skill => (
                 <span key={skill.name} className={`group relative px-3 py-1 bg-white-paper border border-outline-variant font-caption rounded-full cursor-default ${skill.isCore ? 'font-semibold' : ''}`}>
                   {skill.name}
@@ -649,7 +691,7 @@ export default function AcademicPage() {
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-6 bg-white/40 rotate-1 opacity-50"></div>
             <span className="material-symbols-outlined text-[20px] text-accent-sand block mb-2">edit_note</span>
             <p className="font-caption text-primary-container italic leading-relaxed">
-              "Objective: I aim to build a career as a cybersecurity and AI researcher focusing on digital forensics and secure AI systems."
+              "Objective: Computer Science student specializing in Cybersecurity, with project experience in AI-based deepfake detection, Zero Trust access, security tooling, and hybrid cloud security architecture."
             </p>
           </div>
         </aside>
