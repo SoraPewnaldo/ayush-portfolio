@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import FolderItem from './FolderItem';
 import hiGif from '../assets/Hi.gif';
 import heckerGif from '../assets/Hecker.gif';

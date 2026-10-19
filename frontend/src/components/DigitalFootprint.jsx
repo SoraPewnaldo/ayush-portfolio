@@ -1,22 +1,64 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+function getInitialBrowserInfo() {
+  if (typeof window === 'undefined') {
+    return {
+      browser: "Unknown",
+      os: "Unknown",
+      language: "Unknown",
+      timezone: "Unknown",
+      gpu: "Unknown"
+    };
+  }
+
+  const ua = navigator.userAgent;
+  let browser = "Unknown Browser";
+  if (ua.includes("Firefox")) browser = "Firefox";
+  else if (ua.includes("Edg")) browser = "Edge";
+  else if (ua.includes("Chrome")) browser = "Chrome";
+  else if (ua.includes("Safari")) browser = "Safari";
+
+  let os = "Unknown OS";
+  if (ua.includes("Win")) os = "Windows";
+  else if (ua.includes("Mac")) os = "macOS";
+  else if (ua.includes("Linux")) os = "Linux";
+  else if (ua.includes("Android")) os = "Android";
+  else if (ua.includes("like Mac")) os = "iOS";
+
+  let gpu = "Unknown GPU";
+  try {
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (gl) {
+      const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+      if (debugInfo) {
+        gpu = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+        gpu = gpu.replace(/ANGLE \([^,]+, /, '');
+        gpu = gpu.replace(/ \([^)]+\) Direct3D.*/, '');
+        gpu = gpu.replace(/ Direct3D.*/, '');
+        gpu = gpu.replace(/, or similar.*/, '');
+        gpu = gpu.trim();
+      }
+    }
+  } catch {
+    // WebGL unsupported or restricted
+  }
+
+  return {
+    browser,
+    os,
+    language: navigator.language || "Unknown",
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Unknown",
+    gpu
+  };
+}
 
 export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -3, isMobileLayout = false }) {
   const [ipData, setIpData] = useState({ ip: "Locating...", isp: "" });
-  const [browserInfo, setBrowserInfo] = useState({
-    browser: "Unknown",
-    os: "Unknown",
-    language: "Unknown",
-    timezone: "Unknown",
-    gpu: "Unknown"
-  });
-  
-  const [position, setPosition] = useState({ top, left });
+  const [browserInfo, setBrowserInfo] = useState(getInitialBrowserInfo);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const dragRef = useRef(null);
-
-  useEffect(() => {
-    setPosition({ top, left });
-  }, [top, left]);
 
   useEffect(() => {
     // Fetch IP Data with fallback
@@ -40,15 +82,7 @@ export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -
           .catch(() => setIpData({ ip: "Encrypted", isp: "" }));
       });
 
-    // Extract Browser Info
-    const ua = navigator.userAgent;
-    let browser = "Unknown Browser";
-    if (ua.includes("Firefox")) browser = "Firefox";
-    else if (ua.includes("Edg")) browser = "Edge";
-    else if (ua.includes("Chrome")) browser = "Chrome";
-    else if (ua.includes("Safari")) browser = "Safari";
-    
-    // Brave disguises itself as Chrome for privacy, but we can detect it using its custom API
+    // Brave detection
     if (navigator.brave && navigator.brave.isBrave) {
       navigator.brave.isBrave().then(isBrave => {
         if (isBrave) {
@@ -56,40 +90,6 @@ export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -
         }
       });
     }
-    
-    let os = "Unknown OS";
-    if (ua.includes("Win")) os = "Windows";
-    else if (ua.includes("Mac")) os = "macOS";
-    else if (ua.includes("Linux")) os = "Linux";
-    else if (ua.includes("Android")) os = "Android";
-    else if (ua.includes("like Mac")) os = "iOS";
-
-    // GPU Detection via WebGL
-    let gpu = "Unknown GPU";
-    try {
-      const canvas = document.createElement('canvas');
-      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-      if (gl) {
-        const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
-        if (debugInfo) {
-          gpu = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
-          // Clean up common ugly strings (e.g. "ANGLE (NVIDIA, NVIDIA GeForce RTX 3070 Ti Laptop GPU (0x00002F58) Direct3D11 vs_5_0 ps_5_0, D3D11)")
-          gpu = gpu.replace(/ANGLE \([^,]+, /, ''); // Removes "ANGLE (Vendor, "
-          gpu = gpu.replace(/ \([^)]+\) Direct3D.*/, ''); // Removes " (0x...) Direct3D..."
-          gpu = gpu.replace(/ Direct3D.*/, ''); // Removes " Direct3D..."
-          gpu = gpu.replace(/, or similar.*/, '');
-          gpu = gpu.trim();
-        }
-      }
-    } catch (e) {}
-
-    setBrowserInfo({
-      browser,
-      os,
-      language: navigator.language || "Unknown",
-      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Unknown",
-      gpu
-    });
   }, []);
 
   // Dragging logic
@@ -112,18 +112,13 @@ export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -
       const dx = e.clientX - startX;
       const dy = e.clientY - startY;
       
-      setPosition(prev => {
-        const currentTop = parseFloat(prev.top);
-        const currentLeft = parseFloat(prev.left);
-        
-        const percentX = (dx / window.innerWidth) * 100;
-        const percentY = (dy / window.innerHeight) * 100;
-        
-        return {
-          top: `${currentTop + percentY}%`,
-          left: `${currentLeft + percentX}%`
-        };
-      });
+      const percentX = (dx / window.innerWidth) * 100;
+      const percentY = (dy / window.innerHeight) * 100;
+      
+      setDragOffset(prev => ({
+        x: prev.x + percentX,
+        y: prev.y + percentY
+      }));
       
       startX = e.clientX;
       startY = e.clientY;
@@ -157,7 +152,11 @@ export default function DigitalFootprint({ top = '45%', left = '12%', rotate = -
       style={
         isMobileLayout
           ? { transform: `rotate(${rotate}deg)` }
-          : { top: position.top, left: position.left, transform: `rotate(${rotate}deg)` }
+          : { 
+              top: `calc(${top} + ${dragOffset.y}%)`, 
+              left: `calc(${left} + ${dragOffset.x}%)`, 
+              transform: `rotate(${rotate}deg)` 
+            }
       }
     >
       <div className={`bg-surface/90 border border-on-surface-variant/30 rounded-lg p-3 shadow-xl backdrop-blur-md font-mono text-[11px] relative overflow-hidden ${isMobileLayout ? 'w-full' : 'min-w-[240px] max-w-[280px]'}`}>

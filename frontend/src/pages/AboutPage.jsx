@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import shinchan from '../assets/shinchan.gif';
 import Ayush from '../assets/Ayush.webp';

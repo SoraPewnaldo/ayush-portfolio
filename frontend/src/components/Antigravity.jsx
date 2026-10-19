@@ -1,7 +1,14 @@
-/* eslint-disable react/no-unknown-property */
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useMemo, useRef, useEffect } from 'react';
 import * as THREE from 'three';
+
+function createSeededRandom(seed = 987654321) {
+  let s = seed;
+  return function() {
+    s = (s * 1664525 + 1013904223) % 4294967296;
+    return s / 4294967296;
+  };
+}
 
 const AntigravityInner = ({
   count = 300,
@@ -39,23 +46,24 @@ const AntigravityInner = ({
   }, []);
 
   const particles = useMemo(() => {
+    const rand = createSeededRandom(101);
     const temp = [];
     const width = viewport.width || 100;
     const height = viewport.height || 100;
 
     for (let i = 0; i < count; i++) {
-      const t = Math.random() * 100;
-      const factor = 20 + Math.random() * 100;
-      const speed = 0.01 + Math.random() / 200;
-      const xFactor = -50 + Math.random() * 100;
-      const yFactor = -50 + Math.random() * 100;
-      const zFactor = -50 + Math.random() * 100;
+      const t = rand() * 100;
+      const factor = 20 + rand() * 100;
+      const speed = 0.01 + rand() / 200;
+      const xFactor = -50 + rand() * 100;
+      const yFactor = -50 + rand() * 100;
+      const zFactor = -50 + rand() * 100;
 
-      const x = (Math.random() - 0.5) * width;
-      const y = (Math.random() - 0.5) * height;
-      const z = (Math.random() - 0.5) * 20;
+      const x = (rand() - 0.5) * width;
+      const y = (rand() - 0.5) * height;
+      const z = (rand() - 0.5) * 20;
 
-      const randomRadiusOffset = (Math.random() - 0.5) * 2;
+      const randomRadiusOffset = (rand() - 0.5) * 2;
 
       temp.push({
         t,
@@ -112,9 +120,9 @@ const AntigravityInner = ({
     const globalRotation = state.clock.getElapsedTime() * rotationSpeed;
 
     particles.forEach((particle, i) => {
-      let { t, speed, mx, my, mz, cz, randomRadiusOffset } = particle;
-
-      t = particle.t += speed / 2;
+      const { speed, mx, my, mz, cz, randomRadiusOffset } = particle;
+      particle.t += speed / 2;
+      const t = particle.t;
 
       const projectionFactor = 1 - cz / 50;
       const projectedTargetX = targetX * projectionFactor;

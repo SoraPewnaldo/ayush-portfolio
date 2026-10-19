@@ -1,4 +1,4 @@
-import { useMemo, useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import Desktop from './components/Desktop';
@@ -47,40 +47,53 @@ function PageMetadata() {
   return null;
 }
 
-function App() {
-  const backgroundStars = useMemo(() => {
-    const list = [];
-    const colors = ['#FFD700', '#FFA500', '#FF8C00', '#FFE4B5', '#FFF8DC']; // golds and warm whites
-    
-    // 400 tiny dots for a very dense starfield
-    for (let i = 0; i < 400; i++) {
-      list.push({
-        id: `dot-${i}`,
-        type: 'dot',
-        size: Math.random() < 0.8 ? 1 : 2,
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        delay: `${Math.random() * 5}s`,
-        duration: `${2 + Math.random() * 4}s`
-      });
-    }
+function createSeededRandom(seed = 123456789) {
+  let s = seed;
+  return function() {
+    s = (s * 1664525 + 1013904223) % 4294967296;
+    return s / 4294967296;
+  };
+}
 
-    // 45 glowing crosses
-    for (let i = 0; i < 45; i++) {
-      list.push({
-        id: `cross-${i}`,
-        type: 'cross',
-        size: 15 + Math.random() * 20, // 15px to 35px width/height
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-        color: Math.random() > 0.5 ? '#FFD700' : '#FF8C00', // yellow/orange
-        delay: `${Math.random() * 5}s`,
-        duration: `${3 + Math.random() * 4}s`
-      });
-    }
-    return list;
-  }, []);
+function generateBackgroundStars() {
+  const rand = createSeededRandom(42);
+  const list = [];
+  const colors = ['#FFD700', '#FFA500', '#FF8C00', '#FFE4B5', '#FFF8DC'];
+  
+  // 400 tiny dots for dense starfield
+  for (let i = 0; i < 400; i++) {
+    list.push({
+      id: `dot-${i}`,
+      type: 'dot',
+      size: rand() < 0.8 ? 1 : 2,
+      top: `${(rand() * 100).toFixed(2)}%`,
+      left: `${(rand() * 100).toFixed(2)}%`,
+      color: colors[Math.floor(rand() * colors.length)],
+      delay: `${(rand() * 5).toFixed(2)}s`,
+      duration: `${(2 + rand() * 4).toFixed(2)}s`
+    });
+  }
+
+  // 45 glowing crosses
+  for (let i = 0; i < 45; i++) {
+    list.push({
+      id: `cross-${i}`,
+      type: 'cross',
+      size: 15 + rand() * 20,
+      top: `${(rand() * 100).toFixed(2)}%`,
+      left: `${(rand() * 100).toFixed(2)}%`,
+      color: rand() > 0.5 ? '#FFD700' : '#FF8C00',
+      delay: `${(rand() * 5).toFixed(2)}s`,
+      duration: `${(3 + rand() * 4).toFixed(2)}s`
+    });
+  }
+  return list;
+}
+
+const STATIC_BACKGROUND_STARS = generateBackgroundStars();
+
+function App() {
+  const backgroundStars = STATIC_BACKGROUND_STARS;
 
   return (
     <Router>

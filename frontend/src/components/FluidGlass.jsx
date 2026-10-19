@@ -1,4 +1,3 @@
-import * as THREE from 'three';
 import { useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment } from '@react-three/drei';
@@ -9,7 +8,6 @@ import { useGLTF, MeshTransmissionMaterial } from '@react-three/drei';
 function LensCursor({ modeProps = {} }) {
   const ref = useRef();
   const mousePos = useRef({ x: 0, y: 0 });
-  const virtualPos = useRef({ x: 0, y: 0 });
   
   // Load the lens 3D model
   const { nodes } = useGLTF('/assets/3d/lens.glb');

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import rangmanch from '../assets/rangmanch.webp';
 import dance1 from '../assets/dance1.webp';

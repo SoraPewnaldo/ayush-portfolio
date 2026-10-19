@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 export default function FolderItem({ label, top, left, rotate, path, w, h, iconProps, peekItems = [] }) {
   const navigate = useNavigate();
-  const [position, setPosition] = useState({ top, left });
   const [isDragging, setIsDragging] = useState(false);
   const dragRef = useRef(null);
 
@@ -38,7 +37,7 @@ export default function FolderItem({ label, top, left, rotate, path, w, h, iconP
       }
     };
 
-    const handleClick = (e) => {
+    const handleClick = () => {
       if (!didMove) {
         navigate(path);
       }
